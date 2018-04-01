@@ -8,13 +8,13 @@
 
       <!-- <p>{{ht}}  {{wt}}</p> -->
       
-        <div v-if="val==0">  
+        <div v-if="val==0" style="color:white">  
         
-        <div id="btn"> 
-          <a class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 mdl-color--white material-icons" role="presentation">add</i></a>
-        <a v-on:click="deleteit" class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">delete</i></a>
+        <div id="btn" style="color:black"> 
+          <button class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 mdl-color--white material-icons" role="presentation">add</i></button>
+        <button v-on:click="deleteit" class="collection-item mdl-navigation__link" ><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">delete</i></button>
 
-        <a v-on:click="deleteit" class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">settings</i></a>
+        <button v-on:click="deleteit" class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">settings</i></button>
 
 <!--    _____________________________________________
         code for button is removed and added <a> </a>
