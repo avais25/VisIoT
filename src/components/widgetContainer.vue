@@ -6,16 +6,23 @@
 -->
       <!-- <cGauge></cGauge> -->
 
-      <p>{{ht}}  {{wt}}</p>
-      <div v-if="index==0">
+      <!-- <p>{{ht}}  {{wt}}</p> -->
+      
         <div v-if="val==0">  
-        {{val}}  
+        
         <div id="btn"> 
          <button  v-on:click="deleteit"><img src="./Icons/del.png" width="15" height="15" />  </button>
           <button  v-on:click="settings"><img src="./Icons/set.jpeg" width="15" height="15" />  </button>
         </div>
-      <pl v-bind:ht="ht" v-bind:wt="wt" ></pl> 
+
+        <div v-if="index==0">
+      <plotlyGauge v-bind:ht="ht" v-bind:wt="wt" ></plotlyGauge>
       </div>
+
+      <div v-if="index==1">
+      <plotlyLine v-bind:ht="ht" v-bind:wt="wt" ></plotlyLine>
+      </div>
+
       </div>
 
 
@@ -26,8 +33,9 @@
 <script>
 
 
-import eGauge from './echart';
-import pl from './Plotly'
+//import eGauge from './echart';
+import plotlyGauge from './Widgets/Gauge'
+import plotlyLine from './Widgets/Line'
 // import cGauge from './cgauge';
  
 export default {
@@ -35,18 +43,22 @@ export default {
 
 	name: 'container',
   props:{
+    //height of the ccontainer
     ht:{
       type:Number,
       default:'10'
     },
+    //width of the container
     wt:{
       type:Number,
       default:'10'
     },
+    //val contains the flag for delete button
     val:{
       type:String,
       default:'0'
     },
+    //index of the container
     index: {
       type: String,
       default: '10'
@@ -54,7 +66,9 @@ export default {
     }
   },
     
-    components:{eGauge,pl},
+    components:{plotlyGauge,
+    plotlyLine
+  },
 
     methods:{
       deleteit: function(val){

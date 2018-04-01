@@ -4,7 +4,7 @@
   
           <h4 class="title">Gauge</h4>
           <div ref="gauge"></div>
-          <div ref="pie"></div>
+          
 
 
   </div>
@@ -113,14 +113,14 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
 
   created () {
     //this.fetchData()
-    
   },
 
 
   
-
+//called while mounting
   mounted () {
     this.gauge()
+  
 
   },
 
