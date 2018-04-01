@@ -37,7 +37,7 @@
 
                                         <!-- <cGauge v-if="item.i==0"></cGauge>
  -->
-                                        <widgetContainer v-bind:msg="item.i" v-bind:ht="item.h" v-bind:wt="item.w"></widgetContainer>
+                                        <widgetContainer v-bind:index="item.i" v-bind:ht="item.h" v-bind:wt="item.w"></widgetContainer>
 
                              </grid-item>
       </grid-layout>
