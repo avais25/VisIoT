@@ -100,7 +100,8 @@ var layout = {
   xaxis: {zeroline:false, showticklabels:false,
        showgrid: false, range: [-1, 1]},
   yaxis: {zeroline:false, showticklabels:false,
-       showgrid: false, range: [-1, 1]}
+       showgrid: false, range: [-1, 1]},
+       margin: { t: 5, l: 5, b: 5, r: 5 }
 }
 
 Plotly.newPlot(this.$refs.gauge, data, layout)
@@ -162,12 +163,13 @@ var layout = {
       }
     }],
   title: '<b>Gauge</b> <br> Temperature 0-100',
-  height: 500,
-  width: 500,
+  height: this.ht,
+  width: this.wt,
   xaxis: {zeroline:false, showticklabels:false,
        showgrid: false, range: [-1, 1]},
   yaxis: {zeroline:false, showticklabels:false,
-       showgrid: false, range: [-1, 1]}
+       showgrid: false, range: [-1, 1]},
+       margin: { t: 80, l: 5, b: 5, r: 5 }
 }
 
 

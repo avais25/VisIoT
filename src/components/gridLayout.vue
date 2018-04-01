@@ -22,6 +22,7 @@
       <grid-layout :layout="layout"
                              :col-num="12"
                              :row-height="30"
+                             :col-width="30"
                              :is-draggable="draggable"
                              :is-resizable="resizable"
                              :vertical-compact="true"
@@ -39,7 +40,7 @@
 
                                         <!-- <cGauge v-if="item.i==0"></cGauge>
  -->
-                                        <widgetContainer v-bind:index="item.i" v-bind:ht="item.h" v-bind:wt="item.w"></widgetContainer>
+                                        <widgetContainer v-bind:index="item.i" v-bind:ht="item.h*35" v-bind:wt="item.w*85"></widgetContainer>
 
                              </grid-item>
       </grid-layout>
