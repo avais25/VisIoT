@@ -110,7 +110,7 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
 
 
 
-    refreshData(output) {
+    refreshData() {
     this.level = (Math.random() * 180).toFixed(2) - 0
 
 

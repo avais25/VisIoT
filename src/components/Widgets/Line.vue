@@ -27,7 +27,33 @@ export default {
 
  data() {
   return{
-//contains the data
+    //contains the data
+
+ 
+    trace1 : {
+  type: 'scatter',
+  x: [1, 2, 3, 4],
+  y: [10, 15, 13, 17],
+  mode: 'lines',
+  name: 'Temperature',
+  line: {
+    color: 'rgb(219, 64, 82)',
+    width: 3
+  }
+},
+
+trace2 : {
+  type: 'scatter',
+  x: [1, 2, 3, 4],
+  y: [12, 9, 15, 12],
+  mode: 'lines',
+  name: 'Humidity',
+  line: {
+    color: 'rgb(55, 128, 191)',
+    width: 2
+  }
+}
+
 }
 },
 
@@ -38,42 +64,45 @@ export default {
 
       console.log("linePlot function called");
 
-var trace1 = {
-  type: 'scatter',
-  x: [1, 2, 3, 4],
-  y: [10, 15, 13, 17],
-  mode: 'lines',
-  name: 'Red',
-  line: {
-    color: 'rgb(219, 64, 82)',
-    width: 3
-  }
-}
 
-var trace2 = {
-  type: 'scatter',
-  x: [1, 2, 3, 4],
-  y: [12, 9, 15, 12],
-  mode: 'lines',
-  name: 'Blue',
-  line: {
-    color: 'rgb(55, 128, 191)',
-    width: 1
-  }
-}
 
-var layout = {
-  width: 500,
-  height: 500
-}
+    var layout = {
+      width: this.wt,
+      height: this.ht
+    }
 
-var data = [trace1, trace2];
+    var data = [this.trace1, this.trace2];
 
-Plotly.newPlot(this.$refs.line, data, layout);
+    Plotly.newPlot(this.$refs.line, data, layout);
 
+  
+    },
+
+
+    refreshData() {
+
+    var layout = {
+    width: this.wt,
+    height: this.ht
+    }
+
+    //this.trace1.x.unshift((Math.random() * 17).toFixed(2) - 0);
     
 
-    }
+    this.trace1.line.width=(Math.random() * 8).toFixed(2) - 0;
+
+    //this.trace1.y.unshift((Math.random() * 17).toFixed(2) - 0);
+    //this.trace1.y.splice(3,1);
+
+ 
+    var data = [this.trace1, this.trace2]
+
+   // this.level = (Math.random() * 180).toFixed(2) - 0
+
+
+
+    Plotly.update(this.$refs.line, data ,layout)
+       }, 
 
     
     
@@ -93,6 +122,11 @@ Plotly.newPlot(this.$refs.line, data, layout);
 //called on mounted
   mounted () {
     this.linePlot()
+
+    this.refreshData()
+      setInterval(function () {
+          this.refreshData();
+        }.bind(this), 1000); 
 
   },
 
