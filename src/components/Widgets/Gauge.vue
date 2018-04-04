@@ -32,6 +32,7 @@ export default {
  data() {
   return{
     level:90,
+    httpRes:{},
 
 }
 },
@@ -111,8 +112,30 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
 
 
     refreshData() {
-    this.level = (Math.random() * 180).toFixed(2) - 0
+    
 
+    //this.level = (Math.random() * 180).toFixed(2) - 0
+
+    console.log('inside refreshData');
+
+    this.$http.get('https://www.cse.iitb.ac.in/~ronit/')
+    .then(function(response){
+      console.log("assigning vlaur to httpRes")
+      console.log(response.data);
+      console.log(response.data.state.reported["device4.28"]);
+      
+      this.httpRes=response.data.state.reported["device4.28"]
+      })
+
+      console.log("after response")
+
+    this.level= this.httpRes
+    /*var temp=this.$http.get('https://www.cse.iitb.ac.in/~ronit/')
+    .then(function(response){
+      console.log(response.data);
+      });
+
+      console.log(temp);*/
 
     // Trig to calc meter point
 var degrees = 180 - this.level
@@ -185,6 +208,25 @@ var layout = {
 
   created () {
     //this.fetchData()
+
+    this.$http.get('https://www.cse.iitb.ac.in/~ronit/')
+    .then(function(response){
+      console.log("assigning vlaur to httpRes")
+      console.log(response.data);
+      console.log(response.data.state.reported["device4.28"]);
+
+      this.httpRes=response.data.state.reported["device4.28"]
+      })
+
+      console.log("after response")
+
+      console.log(this.httpRes)
+
+    
+
+      //console.log(response.data);
+      //this.users =response.data;
+    
   },
 
 

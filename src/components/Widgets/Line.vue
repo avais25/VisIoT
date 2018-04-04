@@ -29,6 +29,9 @@ export default {
   return{
     //contains the data
 
+/*   a:[1, 2, 3, 4],
+ b: [10, 15, 13, 17],
+*/
  
     trace1 : {
   type: 'scatter',
@@ -90,9 +93,14 @@ trace2 : {
     
 
     this.trace1.line.width=(Math.random() * 8).toFixed(2) - 0;
+    //this.trace1.y=[5,4,2,6];
+    this.trace1.y[0]=(Math.random() * 17).toFixed(2) - 0
+    console.log(this.trace1)
+    console.log(this.trace1.y)
 
     //this.trace1.y.unshift((Math.random() * 17).toFixed(2) - 0);
     //this.trace1.y.splice(3,1);
+
 
  
     var data = [this.trace1, this.trace2]
@@ -101,7 +109,7 @@ trace2 : {
 
 
 
-    Plotly.update(this.$refs.line, data ,layout)
+    Plotly.redraw(this.$refs.line, data ,layout)
        }, 
 
     
