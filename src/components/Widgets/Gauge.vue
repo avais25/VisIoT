@@ -30,6 +30,7 @@ export default {
 
 
  data() {
+
   return{
     level:90,
     httpRes:{},
@@ -118,13 +119,13 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
 
     console.log('inside refreshData');
 
-    this.$http.get('https://www.cse.iitb.ac.in/~ronit/')
+    this.$http.get('http://10.129.152.123:8002/pubsub/shadow/14')
     .then(function(response){
       console.log("assigning vlaur to httpRes")
       console.log(response.data);
-      console.log(response.data.state.reported["device4.28"]);
+      console.log(response.data.state.reported["device21.55"]);
       
-      this.httpRes=response.data.state.reported["device4.28"]
+      this.httpRes=response.data.state.reported["device21.55"]
       })
 
       console.log("after response")
@@ -209,13 +210,13 @@ var layout = {
   created () {
     //this.fetchData()
 
-    this.$http.get('https://www.cse.iitb.ac.in/~ronit/')
+    this.$http.get('http://10.129.152.123:8002/pubsub/shadow/14')
     .then(function(response){
       console.log("assigning vlaur to httpRes")
       console.log(response.data);
-      console.log(response.data.state.reported["device4.28"]);
+      console.log(response.data.state.reported["device21.55"]);
 
-      this.httpRes=response.data.state.reported["device4.28"]
+      this.httpRes=response.data.state.reported["device21.55"]
       })
 
       console.log("after response")
