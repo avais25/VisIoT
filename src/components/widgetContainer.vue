@@ -10,13 +10,15 @@
       
         <div v-if="val==0" style="color:white">  
         
-        <div id="btn" style="color:black"> 
+        <div id="btn" style="color:black; background-color: white"> 
           <button class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 mdl-color--white material-icons" role="presentation">add</i></button>
         <button v-on:click="deleteit" class="collection-item mdl-navigation__link" ><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">delete</i></button>
 
         <button v-on:click="deleteit" class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">settings</i></button>
 
-<!--    _____________________________________________
+
+<!--
+        _____________________________________________
         code for button is removed and added <a> </a>
         _____________________________________________
 
@@ -25,18 +27,21 @@
 
 -->
         </div>
-
+<!--
         <div v-if="index==0">
+
       <plotlyGauge v-bind:ht="ht" v-bind:wt="wt" ></plotlyGauge>
       </div>
 
       <div v-if="index==1">
       <plotlyLine v-bind:ht="ht" v-bind:wt="wt" ></plotlyLine>
       </div>
+-->
+<googlemap
+  name="example"
+></googlemap>
 
       </div>
-
-
 
   </div>
 </template>
@@ -45,6 +50,7 @@
 
 
 //import eGauge from './echart';
+import googlemap from './Widgets/Gmap'
 import plotlyGauge from './Widgets/Gauge'
 import plotlyLine from './Widgets/Line'
 // import cGauge from './cgauge';
@@ -52,7 +58,7 @@ import plotlyLine from './Widgets/Line'
 export default {
 
 
-	name: 'container',
+  name: 'container',
   props:{
     //height of the ccontainer
     ht:{
@@ -78,7 +84,7 @@ export default {
   },
     
     components:{plotlyGauge,
-    plotlyLine
+    plotlyLine, googlemap
   },
 
     methods:{
