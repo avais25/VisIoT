@@ -10,12 +10,24 @@
 <addD v-on:onSubmit="addDatasourceFn($event)"></addD>
 <ul>
       <li v-for="ds in dataSrcArr">
-        <span :class="{dataSource: ds.contacted}">
+
+        <span v-if="ds.header" :class="{dataSource: ds.contacted}">
+        {{ds.name}}: {{ds.url}}
+          <br>
+      </span>
+
+
+        <span v-else="ds.header" :class="{dataSource: ds.contacted}">
         {{ds.name}}: {{ds.url}}
         <button v-on:click="deleteDatasource(ds)">x</button>
       </span>
       </li>
     </ul>
+</div>
+
+<div class="addWidget">
+  <addW v-bind:arr="dataSrcArr"></addW>
+
 </div>
 
 
@@ -31,6 +43,8 @@
 
 import gridL from './components/gridLayout'
 import addD from './components/addDatasource'
+import addW from './components/addWidget'
+
 
 
 
@@ -39,8 +53,16 @@ export default {
   name: 'App',
 
 
+  props: {
+  arr: {
+    type: Array,
+    default: function () { return [] }
+  }
+},
+
+
   components:  { gridL
-    ,addD
+    ,addD,addW
   },
 
   data() {
@@ -48,7 +70,8 @@ export default {
       newUser:{},
       dataSrcArr: [{
         name: 'Name',
-        url: 'url'
+        url: 'url',
+        header: true
       }]
     }
   },
@@ -73,7 +96,8 @@ export default {
 
     this.dataSrcArr.push({
         name: arr.name,
-        url: arr.url
+        url: arr.url,
+        header: false
       });
 
 
