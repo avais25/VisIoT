@@ -1,4 +1,6 @@
 <template>
+
+
   <div class="hello" >
    
 
@@ -40,7 +42,7 @@
 
                                         <!-- <cGauge v-if="item.i==0"></cGauge>
  -->
-                                        <widgetContainer v-bind:index="item.i" v-bind:ht="item.h*35" v-bind:wt="item.w*85"></widgetContainer>
+                                        <widgetContainer v-bind:index="item.i" v-bind:ht="item.h*35" v-bind:wt="item.w*105"></widgetContainer>
 
                              </grid-item>
       </grid-layout>

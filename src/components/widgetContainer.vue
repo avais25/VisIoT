@@ -26,13 +26,13 @@
 -->
         </div>
 
-        <div v-if="index==0">
+    <!--     <div v-if="index==0">
       <plotlyGauge v-bind:ht="ht" v-bind:wt="wt" ></plotlyGauge>
       </div>
 
       <div v-if="index==1">
       <plotlyLine v-bind:ht="ht" v-bind:wt="wt" ></plotlyLine>
-      </div>
+      </div> -->
 
       </div>
 

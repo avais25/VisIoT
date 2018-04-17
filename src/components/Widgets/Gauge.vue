@@ -103,7 +103,7 @@ var layout = {
        showgrid: false, range: [-1, 1]},
   yaxis: {zeroline:false, showticklabels:false,
        showgrid: false, range: [-1, 1]},
-       margin: { t: 5, l: 5, b: 5, r: 5 }
+       //margin: { t: 5, l: 5, b: 5, r: 5 }
 }
 
 Plotly.newPlot(this.$refs.gauge, data, layout)
