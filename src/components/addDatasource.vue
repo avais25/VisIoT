@@ -8,11 +8,12 @@
 <modal name="add-datasource" @before-open="beforeOpen">
 <form>
   Name:<br>
-  <input type="text" name="name"><br>
+  <input v-model="name"  type="text" name="name" required><br>
   URL:<br>
-  <input type="text" name="url">
+  <input v-model="url"type="text" name="url" required>
   <br>
-  <input type="submit" name="submit" >
+  <!-- <input v-model="url"  v-on:click="onSubmit" type="submit" name="submit" > -->
+  <button v-on:click="onSubmit" type="button">Submit</button>
 </form>
 </modal>
 </div>
@@ -43,6 +44,20 @@ export default {
     }
   },
 
+  data() {
+  return{
+    
+    url: '',
+    name: '',
+    arr:
+    {
+      "name":this.name,
+      "url":this.url
+    },
+
+}
+},
+
     components:{
   },
 
@@ -54,7 +69,20 @@ export default {
     this.$modal.hide('add-datasource');
   },
   beforeOpen (event) {
-    console.log(event.params.foo);
+    //console.log(event.params.foo);
+    console.log("beforeOpen function executed");
+  },
+
+
+  onSubmit(){
+    this.hide();
+    //assign name and url to the array
+    this.arr.name=this.name;
+    this.arr.url=this.url;
+    this.$emit('onSubmit',this.arr);
+
+    console.log("Name inside addDatasource:"+this.name);
+
   }
 }
 

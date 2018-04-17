@@ -5,23 +5,19 @@
 
 <div class="app" >
 
-  <div>
-<!-- <button v-on:click="show"  type="button" href=""><i>Add Widget</i></button>
-<button v-on:click="show" type="button">Add Datasource</button> -->
-<addD></addD>
+  <div class="datasource">
+
+<addD v-on:onSubmit="addDatasourceFn($event)"></addD>
+<ul>
+      <li v-for="ds in dataSrcArr">
+        <span :class="{dataSource: ds.contacted}">
+        {{ds.name}}: {{ds.url}}
+        <button v-on:click="deleteDatasource(ds)">x</button>
+      </span>
+      </li>
+    </ul>
 </div>
 
-
-
-<!-- <modal name="hello-world" @before-open="beforeOpen">
-<form>
-  First name:<br>
-  <input type="text" name="firstname"><br>
-  Last name:<br>
-  <input type="text" name="lastname">
-</form>
-</modal>
- -->
 
 <gridL></gridL>
 
@@ -41,8 +37,20 @@ import addD from './components/addDatasource'
 
 export default {
   name: 'App',
+
+
   components:  { gridL
     ,addD
+  },
+
+  data() {
+    return{
+      newUser:{},
+      dataSrcArr: [{
+        name: 'Name',
+        url: 'url'
+      }]
+    }
   },
 
    methods: {
@@ -55,6 +63,27 @@ export default {
   beforeOpen:function (event) {
     console.log(event.params.foo);
   },
+
+
+//adding the datasource
+  addDatasourceFn(arr){
+    //this.title=name;
+    console.log(arr);
+    console.log("Name in app.vue:"+arr.name);
+
+    this.dataSrcArr.push({
+        name: arr.name,
+        url: arr.url
+      });
+
+
+  },
+
+
+//deleting the datasource
+  deleteDatasource: function(ds){
+      this.dataSrcArr.splice(this.dataSrcArr.indexOf(ds),1);
+    },
 
   mounted () {
   this.show();
