@@ -42,7 +42,7 @@
 
                                         <!-- <cGauge v-if="item.i==0"></cGauge>
  -->
-                                        <widgetContainer v-bind:index="item.i" v-bind:ht="item.h*35" v-bind:wt="item.w*105"></widgetContainer>
+                                        <widgetContainer v-on:deleteit="deleteItem($event)" v-bind:index="item.i" v-bind:ht="item.h*35" v-bind:wt="item.w*105"></widgetContainer>
 
                              </grid-item>
       </grid-layout>
@@ -96,7 +96,30 @@ export default {
       draggable: true,
       index: 0
     }
+  },
+
+  methods: {
+  show () {
+    this.$modal.show('add-widget');
+  },
+  deleteItem(item){
+    console.log("Item to be deletet in GridLayout:"+item);
+
+    for (var i = 0; i < testLayout.length; i++) {
+      if(testLayout[i].i == item)
+      {
+        console.log("Inside if of delete");
+        testLayout.splice(i,1);
+      }
+    }
+
+    
+
+
   }
+}
+
+
 }
 </script>
 

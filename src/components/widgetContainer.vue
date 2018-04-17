@@ -1,12 +1,6 @@
 <template>
   <div>
-       <!--  
-      <eGauge  v-if="msg==0"></eGauge>
-      <p v-else>Widget {{msg}}</p>
--->
-      <!-- <cGauge></cGauge> -->
 
-      <!-- <p>{{ht}}  {{wt}}</p> -->
       
         <div v-if="val==0" style="color:white">  
         
@@ -16,14 +10,7 @@
 
         <button v-on:click="deleteit" class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">settings</i></button>
 
-<!--    _____________________________________________
-        code for button is removed and added <a> </a>
-        _____________________________________________
 
-         <button  v-on:click="deleteit"><img src="./Icons/del.png" width="15" height="15" />  </button>
-          <button  v-on:click="settings"><img src="./Icons/set.jpeg" width="15" height="15" />  </button>
-
--->
         </div>
 
     <!--     <div v-if="index==0">
@@ -83,10 +70,12 @@ export default {
 
     methods:{
       deleteit: function(val){
-        this.val='1'
+        //this.val='1'
+
+        this.$emit('deleteit',this.index)
       },
       Addeit: function(val){
-        this.val='0'
+        //this.val='0'
       },
 
       settings: function(val){
