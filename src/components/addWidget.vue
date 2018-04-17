@@ -10,9 +10,27 @@
   <input v-model="name"  type="text" name="name" required>
   <br>
   Type:<br>
-  <input v-model="type"type="text" name="type" required>
+  <select >
+    <option >Line</option>
+    <option >Gauge</option>
+    <option >Battery</option>
+    <option >Map</option>
+
+
+  </select>
+  
   <br>
-  <!-- <input v-model="url"  v-on:click="onSubmit" type="submit" name="submit" > -->
+  Select a Datasource:-
+  <br>
+  <select >
+    <option v-for="ds in arr">
+      <p v-if="ds.header"></p>
+      <p v-else="ds.header">{{ds.name}}</p>
+    </option>
+
+
+  </select>
+  <br>
   <button v-on:click="onSubmit" type="button">Submit</button>
 </form>
 
