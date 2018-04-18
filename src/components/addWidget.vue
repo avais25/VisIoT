@@ -30,7 +30,6 @@
     </option>
     </p> 
 
-
   </select>
   <br>
   <button v-on:click="onSubmit" type="button">Submit</button>
