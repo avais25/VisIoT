@@ -42,7 +42,7 @@
 
                                         <!-- <cGauge v-if="item.i==0"></cGauge>
  -->
-                                        <widgetContainer v-on:deleteit="deleteItem($event)" v-bind:index="item.i" v-bind:ht="item.h*35" v-bind:wt="item.w*105"></widgetContainer>
+                                        <widgetContainer v-on:deleteit="deleteItem($event)" v-bind:index="item.i" v-bind:ht="item.h*35" v-bind:wt="item.w*105" v-bind:nm="item.name"></widgetContainer>
 
                              </grid-item>
       </grid-layout>
@@ -95,9 +95,11 @@ export default {
   testLayout: {
     type: Array,
     default: function () { return [
-      {"x":0,"y":0,"w":6,"h":15,"i":"0"},
-      {"x":6,"y":0,"w":6,"h":15,"i":"1"},] }
+      {"x":0,"y":0,"w":6,"h":15,"i":"0","name":"gg"},
+      {"x":6,"y":0,"w":6,"h":15,"i":"1","name":"gg"},] }
   },
+
+
 },
 
   data () {

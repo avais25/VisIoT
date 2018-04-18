@@ -3,6 +3,7 @@
 
       
         <div v-if="val==0" style="color:white">  
+          {{nm}}
         
         <div id="btn" style="color:black"> 
           
@@ -61,6 +62,10 @@ export default {
       type: String,
       default: '10'
       /*default:'Foobar'*/
+    },
+    nm: {
+      type: String,
+      default: ' '
     }
   },
     

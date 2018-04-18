@@ -26,12 +26,12 @@
 </div>
 
 <div class="addWidget">
-  <addW v-on:addit="addItem($event)" v-bind:arr="dataSrcArr"></addW>
+  <addW v-on:getname="getname($event)" v-on:addit="addItem($event)"  v-bind:arr="dataSrcArr"></addW>
 
 </div>
 
 
-<gridL v-bind:testLayout="testLayout"></gridL>
+<gridL v-bind:testLayout="testLayout" ></gridL>
 
   </div>
 
@@ -62,9 +62,11 @@ export default {
   testLayout: {
     type: Array,
     default: function () { return [
-      {"x":0,"y":0,"w":6,"h":15,"i":"0"},
-      {"x":6,"y":0,"w":6,"h":15,"i":"1"},] }
+      {"x":0,"y":0,"w":6,"h":15,"i":"0","name":"gg"},
+      {"x":6,"y":0,"w":6,"h":15,"i":"1","name":"gg"},] }
   },
+
+
   },
 
   components:  { gridL
@@ -74,6 +76,10 @@ export default {
   data() {
     return{
       newUser:{},
+      //name
+
+      nm:'',
+
       dataSrcArr: [{
         name: 'Name',
         url: 'url',
@@ -130,12 +136,21 @@ export default {
 
   },
 
+  getname(item){
+    console.log("Getting name");
+    this.nm=item;
+
+    console.log("Name recieved in app.vue:"+item);
+    
+  },
+
 
   addItem(item){
     console.log("Additem called inside grid layout");
     console.log("Item to be added in GridLayout");
 
     var max=0;
+    var maxi=0;
     for (var i = 0; i < this.testLayout.length; i++) {
       if(this.testLayout[i].y > max)
       {
@@ -143,11 +158,21 @@ export default {
         max= this.testLayout[i].y;
         console.log("New max:"+max);
       }
+
+      if(this.testLayout[i].i > maxi)
+      {
+        
+        maxi= this.testLayout[i].i;
+        console.log("New maxi:"+maxi);
+      }
     }
 
-    this.testLayout.push({"x":0,"y":max+1,"w":2,"h":3,"i":"4"});
+    this.testLayout.push({"x":0,"y":max+1,"w":2,"h":3,"i": maxi+1, "name":this.nm});
+    console.log(this.testLayout);
 
   },
+
+  
 
 }
 

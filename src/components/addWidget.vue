@@ -7,7 +7,7 @@
 
 <form>
   Name:<br>
-  <input v-model="name"  type="text" name="name" required>
+  <input v-model="nm"  type="text" name="name" required>
   <br>
   Type:<br>
   <select >
@@ -73,6 +73,7 @@ export default {
     type: Array,
     default: function () { return [] }
   },
+  
 
 },
 
@@ -85,8 +86,8 @@ data() {
     httpRes:'',
     jsonPath:'',
     jsonSelected:'',
-    value:''
-
+    value:'',
+    nm:'',
 }
 },
 
@@ -162,8 +163,16 @@ data() {
     console.log("Name inside addWidget:");
     //console.log(this.arr);
 
+    //sending name
+    this.$emit('getname',this.nm);
+
     this.$emit('addit','  ');
+
+    
     console.log("addit event emited");
+
+    console.log("Name passed from addWidget:"+this.nm);
+
 
     this.hide();
 
