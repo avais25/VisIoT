@@ -61,14 +61,14 @@ Select Device:-<br>
 
 
 //import vmodal from 'vue-js-modal'
-
+//var arrayOfKey=[];
  
 export default {
 
 
 	name: 'addWidget',
 
-
+  
   props: {
   arr: {
     type: Array,
@@ -101,6 +101,8 @@ data() {
     this.$modal.show('add-widget');
     this.jsonPath='';
     this.httpRes='';
+    this.arrayOfKey.splice(0,this.arrayOfKey.length)
+    //this.arrayOfKey=[];
 
     console.log("show modal function called")
   },
@@ -108,12 +110,17 @@ data() {
     this.$modal.hide('add-widget');
     this.jsonPath='';
     this.httpRes='';
+    //this.arrayOfKey.splice(0,this.arrayOfKey.length)
+
     console.log("hide modal function called")
   },
 
 
   beforeOpen (event) {
     //console.log(event.params.foo);
+    this.jsonPath='';
+    this.httpRes='';
+    //this.arrayOfKey.splice(0,this.arrayOfKey.length)
     console.log("beforeOpen of addWidget called");
   },
 
@@ -175,7 +182,9 @@ data() {
 
     this.$emit('gettype',this.type);
 
-    this.$emit('getkeys',this.arrayOfKey);
+    var ak=this.arrayOfKey;
+
+    this.$emit('getkeys',ak);
 
     this.$emit('geturl',this.url);
 

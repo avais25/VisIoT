@@ -110,7 +110,7 @@ var layout = {
         color: '850000'
       }
     }],
-  title: '<b>Gauge</b> <br> Temperature 0-100',
+  title: '<b>Gauge</b> <br> 0-100',
   height: 500,
   width: 500,
   xaxis: {zeroline:false, showticklabels:false,
@@ -171,7 +171,8 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
 
      // console.log(this.httpRes)
 
-      console.log("ExtVal after response"+this.extVal)
+      console.log("ExtVal after response")
+      console.log(this.extVal)  
 
 
       })
@@ -237,7 +238,7 @@ var layout = {
         color: '850000'
       }
     }],
-  title: '<b>Gauge</b> <br> Temperature 0-100',
+  title: '<b>Gauge</b> <br>  0-100',
   height: this.ht,
   width: this.wt,
   xaxis: {zeroline:false, showticklabels:false,

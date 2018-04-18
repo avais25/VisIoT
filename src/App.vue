@@ -80,7 +80,7 @@ export default {
 
       nm:'',
       type:'',
-      arrayOfKey:[],
+      aOfKeys:[],
       url: '',
 
       dataSrcArr: [{
@@ -157,7 +157,7 @@ export default {
 
   getkeys(item){
     console.log("Getting type");
-    this.arrayOfKey=item;
+    this.aOfKeys=item;
 
     console.log("Array of keys recieved in app.vue:"+item);
     console.log(item);
@@ -196,7 +196,10 @@ export default {
       }
     }
 
-    this.testLayout.push({"x":0,"y":max+1,"w":5,"h":10,"i": maxi+1, "name":this.nm, "type":this.type, "keys":this.arrayOfKey, "url":this.url});
+    var ak;//=this.aOfKeys
+    ak= JSON.parse(JSON.stringify(this.aOfKeys));
+
+    this.testLayout.push({"x":0,"y":max+1,"w":5,"h":10,"i": maxi+1, "name":this.nm, "type":this.type, "keys":ak, "url":this.url});
     console.log(this.testLayout);
 
   },
