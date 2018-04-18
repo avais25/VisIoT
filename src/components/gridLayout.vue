@@ -24,7 +24,7 @@
       <grid-layout :layout="layout"
                              :col-num="12"
                              :row-height="30"
-                             :col-width="30"
+                             :container-width="30"
                              :is-draggable="draggable"
                              :is-resizable="resizable"
                              :vertical-compact="true"
@@ -42,7 +42,7 @@
 
                                         <!-- <cGauge v-if="item.i==0"></cGauge>
  -->
-                                        <widgetContainer v-on:deleteit="deleteItem($event)" v-bind:index="item.i" v-bind:ht="item.h*35" v-bind:wt="item.w*105" v-bind:nm="item.name" v-bind:type="item.type"></widgetContainer>
+                                        <widgetContainer v-on:deleteit="deleteItem($event)" v-bind:index="item.i" v-bind:ht="item.h*36" v-bind:wt="item.w*105" v-bind:nm="item.name" v-bind:type="item.type" v-bind:url="item.url" v-bind:keys="item.keys"></widgetContainer>
 
                              </grid-item>
       </grid-layout>
@@ -95,8 +95,8 @@ export default {
   testLayout: {
     type: Array,
     default: function () { return [
-      {"x":0,"y":0,"w":6,"h":15,"i":"0","name":"gg"},
-      {"x":6,"y":0,"w":6,"h":15,"i":"1","name":"gg"},] }
+      /*{"x":0,"y":0,"w":6,"h":15,"i":"0","name":"gg"},
+      {"x":6,"y":0,"w":6,"h":15,"i":"1","name":"gg"},*/] }
   },
 
 
@@ -107,7 +107,8 @@ export default {
       layout: this.testLayout,
       resizable: true,
       draggable: true,
-      index: 0
+      index: 0,
+      //colWidth: 0
     }
   },
 
@@ -127,6 +128,14 @@ export default {
     }
 
   },
+
+  // Helper for generating column width
+  /*calcColWidth() {
+      this.colWidth = (this.containerWidth - (this.margin[0] * (this.cols + 1))) / this.cols;
+     // console.log("### COLS=" + this.cols + " COL WIDTH=" + colWidth + " MARGIN " + this.margin[0]);
+
+      return this.colWidth;
+  },*/
 
   
 }

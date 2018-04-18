@@ -2,7 +2,7 @@
   <div >
  
   
-          <h4 class="title">Line Plot(temp:{{this.tempRes}})(Humid:{{this.humRes}})</h4>
+         <!--  <h4 class="title">Line Plot(temp:{{this.tempRes}})(Humid:{{this.humRes}})</h4> -->
           <div ref="line"></div>
 
 

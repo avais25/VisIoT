@@ -14,11 +14,16 @@
 
         </div>
 
-    <!--     <div v-if="index==0">
-      <plotlyGauge v-bind:ht="ht" v-bind:wt="wt" ></plotlyGauge>
+        
+        <div v-if="type == 'Gauge'">
+      <plotlyGauge v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></plotlyGauge>
       </div>
 
-      <div v-if="index==1">
+       <div v-if="type == 'Line'">
+      <plotlyLine v-bind:ht="ht" v-bind:wt="wt" ></plotlyLine>
+      </div>
+
+      <!-- <div v-if="index==1">
       <plotlyLine v-bind:ht="ht" v-bind:wt="wt" ></plotlyLine>
       </div> -->
 
@@ -59,7 +64,7 @@ export default {
     },
     //index of the container
     index: {
-      type: String,
+      type: Number,
       default: '10'
       /*default:'Foobar'*/
     },
@@ -70,6 +75,14 @@ export default {
     type: {
       type: String,
       default: ' '
+    },
+    url: {
+      type: String,
+      default: ' '
+    },
+    keys: {
+      type: Array,
+      default: function () { return [] }
     }
   },
     

@@ -2,7 +2,7 @@
   <div >
  
   
-          <h4 class="title">Gauge ({{this.level}})</h4>
+          <!-- <h4 class="title">Gauge ({{this.level}})</h4> -->
           <div ref="gauge"></div>
           
 
@@ -25,6 +25,18 @@ export default {
     wt:{
       type:Number,
       default:'10'
+    },
+        url: {
+      type: String,
+      default: ' '
+    },
+    keys: {
+      type: Array,
+      default: function () { return [] }
+    },
+    nm: {
+      type: String,
+      default: ' '
     }
   },
 
@@ -34,6 +46,8 @@ export default {
   return{
     level:90,
     httpRes:{},
+
+    extVal:' ',
 
 }
 },
@@ -119,18 +133,55 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
 
     console.log('inside refreshData');
 
-    this.$http.get('http://10.129.152.123:8002/pubsub/shadow/14')
+    this.$http.get(this.url)
     .then(function(response){
       console.log("assigning vlaur to httpRes")
       console.log(response.data);
-      console.log(response.data.state.reported["device21.55"]);
+      //console.log(response.data.state.reported["device4.27"]);
+
+      this.extVal=response.data
+
+      console.log(this.extVal)
       
-      this.httpRes=response.data.state.reported["device21.55"]
-      })
+      //this.httpRes=response.data.state.reported["device4.27"]
+
+
+       var x;
+       console.log(this.keys)
+    
+    console.log("before for loop")
+    console.log(this.extVal)
+
+
+    for (var i = 0; i < this.keys.length; i++) {
+      
+      console.log("inside for loop")
+      console.log(this.extVal)
+      console.log("x:"+this.keys[i])
+      this.extVal=this.extVal[this.keys[i]]
+    }
+    
+
+
+    /*for (x in this.keys) {
+      
+    }*/
 
       console.log("after response")
 
-    this.level= this.httpRes
+     // console.log(this.httpRes)
+
+      console.log("ExtVal after response"+this.extVal)
+
+
+      })
+
+
+    
+
+      console.log("after response")
+
+    this.level= this.extVal
     /*var temp=this.$http.get('https://www.cse.iitb.ac.in/~ronit/')
     .then(function(response){
       console.log(response.data);
@@ -210,19 +261,35 @@ var layout = {
   created () {
     //this.fetchData()
 
-    this.$http.get('http://10.129.152.123:8002/pubsub/shadow/14')
+    this.$http.get(this.url)
     .then(function(response){
       console.log("assigning vlaur to httpRes")
       console.log(response.data);
-      console.log(response.data.state.reported["device21.55"]);
+      //console.log(response.data.state.reported["device4.27"]);
 
-      this.httpRes=response.data.state.reported["device21.55"]
+      //this.httpRes=response.data.state.reported["device4.27"]
+      this.extVal=response.data
       })
+
+
+      console.log("after response in created")
+
+    /*var x;
+    
+    console.log("before for loop")
+    console.log(this.extVal)
+    for (x in this.keys) {
+      console.log("inside for loop")
+      console.log(this.extVal)
+      this.extVal=this.extVal[x]
+    }
 
       console.log("after response")
 
       console.log(this.httpRes)
 
+      console.log("ExtVal on created"+this.extVal)
+*/
     
 
       //console.log(response.data);
@@ -240,6 +307,8 @@ var layout = {
       setInterval(function () {
           this.refreshData();
         }.bind(this), 1000); 
+
+      console.log("url in gauge component: "+this.url);
   
 
   },

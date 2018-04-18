@@ -62,8 +62,8 @@ export default {
   testLayout: {
     type: Array,
     default: function () { return [
-      {"x":0,"y":0,"w":6,"h":15,"i":"0","name":"gg"},
-      {"x":6,"y":0,"w":6,"h":15,"i":"1","name":"gg"},] }
+      /*{"x":0,"y":0,"w":6,"h":15,"i":"0","name":"gg"},
+      {"x":6,"y":0,"w":6,"h":15,"i":"1","name":"gg"},*/] }
   },
 
 
@@ -196,7 +196,7 @@ export default {
       }
     }
 
-    this.testLayout.push({"x":0,"y":max+1,"w":2,"h":3,"i": maxi+1, "name":this.nm, "type":this.type, "keys":this.arrayOfKey, "url":this.url});
+    this.testLayout.push({"x":0,"y":max+1,"w":5,"h":10,"i": maxi+1, "name":this.nm, "type":this.type, "keys":this.arrayOfKey, "url":this.url});
     console.log(this.testLayout);
 
   },
