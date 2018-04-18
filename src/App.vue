@@ -26,12 +26,12 @@
 </div>
 
 <div class="addWidget">
-  <addW v-bind:arr="dataSrcArr"></addW>
+  <addW v-on:addit="addItem($event)" v-bind:arr="dataSrcArr"></addW>
 
 </div>
 
 
-<gridL></gridL>
+<gridL v-bind:testLayout="testLayout"></gridL>
 
   </div>
 
@@ -57,9 +57,15 @@ export default {
   arr: {
     type: Array,
     default: function () { return [] }
-  }
-},
+  },
 
+  testLayout: {
+    type: Array,
+    default: function () { return [
+      {"x":0,"y":0,"w":6,"h":15,"i":"0"},
+      {"x":6,"y":0,"w":6,"h":15,"i":"1"},] }
+  },
+  },
 
   components:  { gridL
     ,addD,addW
@@ -71,7 +77,8 @@ export default {
       dataSrcArr: [{
         name: 'Name',
         url: 'url',
-        header: true
+        header: true,
+        testLayout: this.testLayout,
       }]
     }
   },
@@ -122,6 +129,26 @@ export default {
   this.show();
 
   },
+
+
+  addItem(item){
+    console.log("Additem called inside grid layout");
+    console.log("Item to be added in GridLayout");
+
+    var max=0;
+    for (var i = 0; i < this.testLayout.length; i++) {
+      if(this.testLayout[i].y > max)
+      {
+        
+        max= this.testLayout[i].y;
+        console.log("New max:"+max);
+      }
+    }
+
+    this.testLayout.push({"x":0,"y":max+1,"w":2,"h":3,"i":"4"});
+
+  },
+
 }
 
 }

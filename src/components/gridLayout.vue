@@ -62,12 +62,12 @@ import widgetContainer from './widgetContainer';
 /*import cGauge from './echart';*/
 
 
-var testLayout = [
+/*var testLayout = [
   {"x":0,"y":0,"w":6,"h":15,"i":"0"},
   {"x":6,"y":0,"w":6,"h":15,"i":"1"},
-  /*{"x":4,"y":0,"w":2,"h":5,"i":"2"},
-  {"x":6,"y":0,"w":2,"h":3,"i":"3"},
-  {"x":8,"y":0,"w":2,"h":3,"i":"4"},
+  {"x":0,"y":1,"w":2,"h":5,"i":"2"},
+  {"x":0,"y":2,"w":2,"h":3,"i":"3"},
+  {"x":0,"y":3,"w":2,"h":3,"i":"4"},
   {"x":10,"y":0,"w":2,"h":3,"i":"5"},
   {"x":0,"y":5,"w":2,"h":5,"i":"6"},
   {"x":2,"y":5,"w":2,"h":5,"i":"7"},
@@ -82,16 +82,27 @@ var testLayout = [
   {"x":8,"y":10,"w":2,"h":5,"i":"16"},
   {"x":10,"y":4,"w":2,"h":2,"i":"17"},
   {"x":0,"y":9,"w":2,"h":3,"i":"18"},
-  {"x":2,"y":6,"w":2,"h":2,"i":"19"}*/
-];
+  {"x":2,"y":6,"w":2,"h":2,"i":"19"}
+];*/
 
 
 export default {
   name: 'gridComp',
   components:  { GridLayout, GridItem ,widgetContainer},
+
+
+  props: {
+  testLayout: {
+    type: Array,
+    default: function () { return [
+      {"x":0,"y":0,"w":6,"h":15,"i":"0"},
+      {"x":6,"y":0,"w":6,"h":15,"i":"1"},] }
+  },
+},
+
   data () {
     return {
-      layout: testLayout,
+      layout: this.testLayout,
       resizable: true,
       draggable: true,
       index: 0
@@ -105,18 +116,17 @@ export default {
   deleteItem(item){
     console.log("Item to be deletet in GridLayout:"+item);
 
-    for (var i = 0; i < testLayout.length; i++) {
-      if(testLayout[i].i == item)
+    for (var i = 0; i < this.testLayout.length; i++) {
+      if(this.testLayout[i].i == item)
       {
         console.log("Inside if of delete");
-        testLayout.splice(i,1);
+        this.testLayout.splice(i,1);
       }
     }
 
-    
+  },
 
-
-  }
+  
 }
 
 

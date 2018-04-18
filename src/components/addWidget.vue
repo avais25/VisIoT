@@ -44,7 +44,7 @@ Select Device:-<br>
   <br>
 
 
-  <button v-on:click="onSubmit" type="button">Submit</button>
+  <button v-on:click="onSub" type="button">Submit</button>
 </form>
 
 </modal>
@@ -98,11 +98,14 @@ data() {
     this.$modal.show('add-widget');
     this.jsonPath='';
     this.httpRes='';
+
+    console.log("show modal function called")
   },
   hide () {
     this.$modal.hide('add-widget');
     this.jsonPath='';
     this.httpRes='';
+    console.log("hide modal function called")
   },
 
 
@@ -138,6 +141,8 @@ data() {
     this.jsonPath=this.jsonPath+" "+this.jsonSelected;
     this.httpRes=this.httpRes[this.jsonSelected];
   }
+  //httpRes should contain final value
+  // jsonSelected should coontain final key
   else{
     console.log("else:"+this.jsonSelected);
   console.log("else:"+this.httpRes);
@@ -150,12 +155,17 @@ data() {
   
   },
 
-  onSubmit(){
-    this.hide();
+  onSub(){
+    //this.hide();
    
-
+   
     console.log("Name inside addWidget:");
-    console.log(this.arr);
+    //console.log(this.arr);
+
+    this.$emit('addit','  ');
+    console.log("addit event emited");
+
+    this.hide();
 
   }
 }
