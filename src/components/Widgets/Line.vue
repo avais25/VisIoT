@@ -21,6 +21,18 @@ export default {
     wt:{
       type:Number,
       default:'10'
+    },
+         url: {
+      type: String,
+      default: ' '
+    },
+    keys: {
+      type: Array,
+      default: function () { return [] }
+    },
+    nm: {
+      type: String,
+      default: ' '
     }
   },
 
@@ -45,7 +57,9 @@ export default {
   }
 },
 
-trace2 : {
+extVal:' ',
+
+/*trace2 : {
   type: 'scatter',
   x: [1, 2, 3, 4],
   y: [0, 0, 0, 0],
@@ -55,7 +69,7 @@ trace2 : {
     color: 'rgb(55, 128, 191)',
     width: 3
   }
-},
+},*/
 
  tempRes:{},
   humRes:{},
@@ -76,7 +90,7 @@ trace2 : {
             height: this.ht
           }
 
-          var data = [this.trace1, this.trace2];
+          var data = [this.trace1];
 
           Plotly.newPlot(this.$refs.line, data, layout);
 
@@ -102,14 +116,6 @@ trace2 : {
 
 
 
-      //reploting trace of humidity
-      this.trace2.y[3]=this.trace2.y[2]
-
-      this.trace2.y[2]=this.trace2.y[1]
-
-      this.trace2.y[1]=this.trace2.y[0]
-
-      this.trace2.y[0]=this.humRes
 
 
 
@@ -122,23 +128,61 @@ trace2 : {
 
 
       //getting temperature response from http
-       this.$http.get('http://10.129.152.123:8002/pubsub/shadow/14')
+       this.$http.get(this.url)
     .then(function(response){
       console.log("assigning vlaur to tempRes")
       console.log(response.data);
-      console.log(response.data.state.reported["device21.55"]);
+      //console.log(response.data.state.reported["device21.55"]);
 
-      this.tempRes=response.data.state.reported["device21.55"];
+      //this.tempRes=response.data.state.reported["device21.55"];
 
-      console.log(response.data.state.reported["device21.56"]);
+      //console.log(response.data.state.reported["device21.56"]);
 
-      this.humRes=response.data.state.reported["device21.56"]
+      //this.humRes=response.data.state.reported["device21.56"]
+      this.extVal=response.data
+
+      console.log(this.extVal)
+      
+      //this.httpRes=response.data.state.reported["device4.27"]
+
+
+       var x;
+       console.log(this.keys)
+    
+    console.log("before for loop")
+    console.log(this.extVal)
+
+
+    for (var i = 0; i < this.keys.length; i++) {
+      
+      console.log("inside for loop")
+      console.log(this.extVal)
+      console.log("x:"+this.keys[i])
+      this.extVal=this.extVal[this.keys[i]]
+    }
+    
+
+
+    /*for (x in this.keys) {
+      
+    }*/
+
+      console.log("after for loop")
+
+     // console.log(this.httpRes)
+
+      console.log("ExtVal after response")
+      console.log(this.extVal)  
+
+
       })
+
+
+    
 
       console.log("after response")
 
-      console.log(this.tempRes)
-      console.log(this.humRes)
+    this.tempRes= this.extVal
 
       
 
@@ -164,7 +208,7 @@ trace2 : {
 
 
  
-    var data = [this.trace1, this.trace2]
+    var data = [this.trace1]
 
    // this.level = (Math.random() * 180).toFixed(2) - 0
 
@@ -185,18 +229,18 @@ trace2 : {
 //called on created
   created () {
     //this.fetchData()
-     this.$http.get('http://10.129.152.123:8002/pubsub/shadow/14')
+     this.$http.get(this.url)
     .then(function(response){
       console.log("assigning vlaur to tempRes")
       console.log(response.data);
 
-      console.log(response.data.state.reported["device21.55"]);
+      //console.log(response.data.state.reported["device21.55"]);
 
-      this.tempRes=response.data.state.reported["device21.55"];
+      //this.tempRes=response.data.state.reported["device21.55"];
 
-      console.log(response.data.state.reported["device21.56"]);
+      //console.log(response.data.state.reported["device21.56"]);
 
-      this.humRes=response.data.state.reported["device21.56"]
+      //this.humRes=response.data.state.reported["device21.56"]
       })
 
       console.log("after response")
@@ -220,6 +264,8 @@ trace2 : {
       setInterval(function () {
           this.refreshData();
         }.bind(this), 1000); 
+
+      console.log("value of url"+this.url)
 
   },
 }

@@ -20,7 +20,7 @@
       </div>
 
        <div v-if="type == 'Line'">
-      <plotlyLine v-bind:ht="ht" v-bind:wt="wt" ></plotlyLine>
+      <plotlyLine v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></plotlyLine>
       </div>
 
       <!-- <div v-if="index==1">

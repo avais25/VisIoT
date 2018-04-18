@@ -167,7 +167,7 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
       
     }*/
 
-      console.log("after response")
+      console.log("after for loop")
 
      // console.log(this.httpRes)
 
