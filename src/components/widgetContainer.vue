@@ -66,6 +66,10 @@ export default {
     nm: {
       type: String,
       default: ' '
+    },
+    type: {
+      type: String,
+      default: ' '
     }
   },
     

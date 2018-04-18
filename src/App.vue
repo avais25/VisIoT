@@ -26,7 +26,7 @@
 </div>
 
 <div class="addWidget">
-  <addW v-on:getname="getname($event)" v-on:addit="addItem($event)"  v-bind:arr="dataSrcArr"></addW>
+  <addW v-on:getname="getname($event)" v-on:gettype="gettype($event)" v-on:getkeys="getkeys($event)" v-on:geturl="geturl($event)" v-on:addit="addItem($event)"  v-bind:arr="dataSrcArr"></addW>
 
 </div>
 
@@ -79,6 +79,9 @@ export default {
       //name
 
       nm:'',
+      type:'',
+      arrayOfKey:[],
+      url: '',
 
       dataSrcArr: [{
         name: 'Name',
@@ -144,6 +147,32 @@ export default {
     
   },
 
+  gettype(item){
+    console.log("Getting type");
+    this.type=item;
+
+    console.log("type recieved in app.vue:"+item);
+    
+  },
+
+  getkeys(item){
+    console.log("Getting type");
+    this.arrayOfKey=item;
+
+    console.log("Array of keys recieved in app.vue:"+item);
+    console.log(item);
+    
+  },
+
+  geturl(item){
+    console.log("Getting type");
+    this.url=item;
+
+    console.log("Array of keys recieved in app.vue:"+item);
+    console.log(item);
+    
+  },
+
 
   addItem(item){
     console.log("Additem called inside grid layout");
@@ -167,7 +196,7 @@ export default {
       }
     }
 
-    this.testLayout.push({"x":0,"y":max+1,"w":2,"h":3,"i": maxi+1, "name":this.nm});
+    this.testLayout.push({"x":0,"y":max+1,"w":2,"h":3,"i": maxi+1, "name":this.nm, "type":this.type, "keys":this.arrayOfKey, "url":this.url});
     console.log(this.testLayout);
 
   },
