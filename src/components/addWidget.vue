@@ -22,11 +22,13 @@
   <br>
   Select a Datasource:-
   <br>
-  <select >
-    <option v-for="ds in arr">
+  <select v-on:click="jsonParsing" v-model="url">
+    <p >
+    <option  v-for="ds in arr" v-bind:value="ds.url">
       <p v-if="ds.header"></p>
-      <p v-else="ds.header">{{ds.name}}</p>
+      <p v-else="ds.header" v-on:click="jsonParsing">{{ds.name}}</p>
     </option>
+    </p> 
 
 
   </select>
@@ -59,14 +61,16 @@ export default {
   arr: {
     type: Array,
     default: function () { return [] }
-  }
+  },
+
 },
 
 data() {
   return{
     
     name: '',
-    type: ''
+    type: '',
+    url:'' 
 
 }
 },
@@ -88,12 +92,14 @@ data() {
     console.log("beforeOpen of addWidget called");
   },
 
+  jsonParsing() {
+    console.log("Url Passed: ");
+    console.log("Url Passed: "+this.url);
+  },
+
   onSubmit(){
     this.hide();
-   /* //assign name and url to the array
-    this.arr.name=this.name;
-    this.arr.url=this.url;
-    this.$emit('onSubmit',this.arr);*/
+   
 
     console.log("Name inside addWidget:");
     console.log(this.arr);
