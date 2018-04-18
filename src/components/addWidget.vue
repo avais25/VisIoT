@@ -26,13 +26,24 @@
     <p >
     <option  v-for="ds in arr" v-bind:value="ds.url">
       <p v-if="ds.header"></p>
-      <p v-else="ds.header" v-on:click="jsonParsing">{{ds.name}}</p>
+      <p v-else="ds.header">{{ds.name}}</p>
     </option>
     </p> 
 
 
   </select>
   <br>
+
+Select Device:-<br>
+
+  <br>
+  <select   v-on:click="jsonIterator" v-model="jsonSelected">
+    <option v-for="(value,key) in httpRes" v-bind:values="key">{{key}}</option>
+    
+  </select>{{jsonPath}}
+  <br>
+
+
   <button v-on:click="onSubmit" type="button">Submit</button>
 </form>
 
@@ -70,7 +81,11 @@ data() {
     
     name: '',
     type: '',
-    url:'' 
+    url:'' ,
+    httpRes:'',
+    jsonPath:'',
+    jsonSelected:'',
+    value:''
 
 }
 },
@@ -81,9 +96,13 @@ data() {
     methods: {
   show () {
     this.$modal.show('add-widget');
+    this.jsonPath='';
+    this.httpRes='';
   },
   hide () {
     this.$modal.hide('add-widget');
+    this.jsonPath='';
+    this.httpRes='';
   },
 
 
@@ -95,6 +114,40 @@ data() {
   jsonParsing() {
     console.log("Url Passed: ");
     console.log("Url Passed: "+this.url);
+
+    this.$http.get(this.url)
+    .then(function(response){
+      console.log("assigning value to httpRes")
+      console.log(response.data.state);
+      //console.log(response.data.state.reported["device21.55"]);
+
+      //this.httpRes=response.data.state.reported["device21.55"]
+      this.httpRes=response.data
+      })
+  },
+
+  jsonIterator() {
+
+    this.$http.get(this.url)
+    .then(function(response){
+      console.log("assigning value to httpRes")
+      console.log(response.data.state);
+      })
+
+    if (this.httpRes.hasOwnProperty(this.jsonSelected)) {
+    this.jsonPath=this.jsonPath+" "+this.jsonSelected;
+    this.httpRes=this.httpRes[this.jsonSelected];
+  }
+  else{
+    console.log("else:"+this.jsonSelected);
+  console.log("else:"+this.httpRes);
+
+  }
+  
+    console.log("jsonSelected:"+this.jsonSelected);
+  console.log("res:"+this.httpRes);
+
+  
   },
 
   onSubmit(){
