@@ -23,7 +23,7 @@
          <span class="datasource_name_header">{{ds.name}}</span>
            <span class="datasource_name_header">{{ds.url}}</span> 
 
-        <span id="cross_button" v-on:click="deleteDatasource(ds)">x</span>
+        <span id="cross_button" v-on:click="deleteDatasource(ds)"><img src="./assets/delete.gif" style="width: 18px;height: 20px;"> </span>
        <hr>
 
       </span>
