@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="add_widget">
  <div id="datasource_button">
   <button v-on:click="show" type="button"><span id="button_add_datasource">ADD DATASOURCE</span>
 
@@ -10,15 +10,17 @@
   
 
 <modal name="add-datasource" @before-open="beforeOpen">
-<form>
-  Name:<br>
+<div id="modal_box" style="padding-right: 50px;padding-top: 50px; ">
+<form style="height: 300px;">
+ <label>Name:</label>
   <input v-model="name"  type="text" name="name" required><br>
-  URL:<br>
-  <input v-model="url"type="text" name="url" required>
+  <label>URL</label> 
+   <input v-model="url"type="text" name="url" required>
   <br>
   <!-- <input v-model="url"  v-on:click="onSubmit" type="submit" name="submit" > -->
-  <button v-on:click="onSubmit" type="button">Submit</button>
+  <button style="margin-left: 300px;margin-top: 50px;  "  id="addWidget_button" v-on:click="onSubmit" type="button">Submit</button>
 </form>
+</div>
 </modal>
 </div>
 

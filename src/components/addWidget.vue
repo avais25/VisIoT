@@ -24,7 +24,7 @@
   </select>
   <br>
  <label>
-  Select a Datasource:-
+  Select a Datasource:
   </label>
   <select v-on:click="jsonParsing" v-model="url">
     <p >
@@ -48,7 +48,7 @@
   <br>
 
 
-  <button v-on:click="onSub" type="button">Submit</button>
+  <button id="addWidget_button" v-on:click="onSub" type="button">Submit</button>
 </form>
 </div>
 </modal>
@@ -219,12 +219,22 @@ data() {
   margin-right:10px;
   float: right;
 }
-#add_widget{
-  background: rgba(0,0,0,.4);
-}
+
 #widgetButton{
  width: 200px;
  background: rgba(200,0,0,.9);
 
+}
+
+#addWidget_button{
+  clear: both;
+  width: 100px;
+  height: auto;
+  background: rgba(0,0,0,.5);
+  border: 1px solid white;
+  border-radius: 0px;
+  margin: 10px;
+  margin-left: 150px; 
+  color: white;
 }
 </style>
