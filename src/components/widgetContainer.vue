@@ -30,6 +30,9 @@
       <div v-if="type == 'PastLine'">
       <textp v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></textp>
       </div>
+      <div v-if="type == 'Map'">
+      <gmap name="Example" v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></gmap>
+      </div>
 
       </div>
 
@@ -46,6 +49,7 @@ import plotlyGauge from './Widgets/Gauge'
 import plotlyLine from './Widgets/Line'
 import textv from './Widgets/text'
 import textp from './Widgets/pastLine'
+import gmap from './Widgets/Gmap'
 // import cGauge from './cgauge';
  
 export default {
@@ -93,7 +97,7 @@ export default {
   },
     
     components:{plotlyGauge,
-    plotlyLine,textv,textp
+    plotlyLine,textv,textp,gmap
   },
 
     methods:{
@@ -115,7 +119,7 @@ export default {
 </script>
 <style>
 #btn{
-  margin-right:10px;
+  
   float: right;
 }
 </style>
