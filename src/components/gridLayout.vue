@@ -42,7 +42,7 @@
 
                                         <!-- <cGauge v-if="item.i==0"></cGauge>
  -->
-                                        <widgetContainer v-on:deleteit="deleteItem($event)" v-bind:index="item.i" v-bind:ht="item.h*36" v-bind:wt="item.w*105" v-bind:nm="item.name" v-bind:type="item.type" v-bind:url="item.url" v-bind:keys="item.keys"></widgetContainer>
+                                        <widgetContainer v-on:deleteit="deleteItem($event)" v-bind:index="item.i" v-bind:ht="item.h*32" v-bind:wt="item.w*135" v-bind:nm="item.name" v-bind:type="item.type" v-bind:url="item.url" v-bind:keys="item.keys"></widgetContainer>
 
                              </grid-item>
       </grid-layout>

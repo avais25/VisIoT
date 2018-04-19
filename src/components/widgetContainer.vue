@@ -3,23 +3,21 @@
 
       
         <div v-if="val==0" style="color:white">  
-          {{nm}}
+         <h1> {{nm}}</h1>
         
         <div id="btn" style="color:black"> 
           
-        <button v-on:click="deleteit" class="collection-item mdl-navigation__link" ><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">delete</i></button>
+        <span v-on:click="deleteit"><img src="~@/assets/delete.gif" style="width: 22px;height: 25px;position: relative;left: -50px;top: -50px"></span>
 
-        <button v-on:click="deleteit" class="collection-item mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">settings</i></button>
-
-
+        
         </div>
 
         
-        <div v-if="type == 'Gauge'">
+      <div v-if="type == 'Gauge'">
       <plotlyGauge v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></plotlyGauge>
       </div>
 
-       <div v-if="type == 'Line'">
+      <div v-if="type == 'Line'">
       <plotlyLine v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></plotlyLine>
       </div>
 

@@ -59,7 +59,7 @@ export default {
 
       console.log("gauge function called");
 
-      // Enter a speed between 0 and 180
+      // Enter a  between 0 and 180
 //var level = 90
 
 // Trig to calc meter point
@@ -81,7 +81,7 @@ var data = [{ type: 'scatter',
    x: [0], y:[0],
   marker: {size: 28, color:'850000'},
   showlegend: false,
-  name: 'speed',
+  name: '',
   text: this.level,
   hoverinfo: 'text+name'},
   { values: [50/6, 50/6, 50/6, 50/6, 50/6, 50/6, 50],
@@ -110,7 +110,7 @@ var layout = {
         color: '850000'
       }
     }],
-  title: '<b>Gauge</b> <br> 0-100',
+  title: '<b>Gauge</b> <br>',
   height: 500,
   width: 500,
   xaxis: {zeroline:false, showticklabels:false,
@@ -202,6 +202,7 @@ var mainPath = 'M -.0 -0.025 L .0 0.025 L ',
    pathX = String(x),
    space = ' ',
    pathY = String(y),
+
    pathEnd = ' Z'
 var path = mainPath.concat(pathX,space,pathY,pathEnd)
 
@@ -209,13 +210,16 @@ var data = [{ type: 'scatter',
    x: [0], y:[0],
   marker: {size: 28, color:'850000'},
   showlegend: false,
-  name: 'speed',
+  name: this.level,
   text: this.level,
   hoverinfo: 'text+name'},
   { values: [50/6, 50/6, 50/6, 50/6, 50/6, 50/6, 50],
   rotation: 90,
   // text: ['TOO FAST!', 'Pretty Fast', 'Fast', 'Average',
   // 'Slow', 'Super Slow', ''],
+  text: ['0-30', '31-60', '61-90', '91-120',
+  '121-150', '151-180', ''],
+
   textinfo: 'text',
   textposition:'inside',    
   marker: {colors:['rgba(14, 127, 0, .5)', 'rgba(110, 154, 22, .5)',
@@ -238,7 +242,7 @@ var layout = {
         color: '850000'
       }
     }],
-  title: '<b>Gauge</b> <br>  0-100',
+  title: '<b>Gauge</b> <br>'+this.level+' <br> ',
   height: this.ht,
   width: this.wt,
   xaxis: {zeroline:false, showticklabels:false,

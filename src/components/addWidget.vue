@@ -15,7 +15,6 @@
   <select v-model="type">
     <option >Line</option>
     <option >Gauge</option>
-    <option >Battery</option>
     <option >Map</option>
     <option >Text</option>
     <option>PastLine</option>
@@ -45,9 +44,9 @@
     <option v-for="(value,key) in httpRes" v-bind:values="key">{{key}}</option>
    
   </select>
-   <br>
+   <div id="record_path">
   {{jsonPath}}
-  <br>
+</div>
 
 
   <button id="addWidget_button" v-on:click="onSub" type="button">Submit</button>
@@ -238,5 +237,8 @@ data() {
   margin: 10px;
   margin-left: 150px; 
   color: white;
+}
+#record_path{
+  clear: both;
 }
 </style>

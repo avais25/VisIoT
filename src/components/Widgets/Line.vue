@@ -153,8 +153,7 @@ extVal:' ',
     console.log(this.extVal)
 
 
-    for (var i = 0; i < this.keys.length; i++) {
-      
+    for (var i = 0; i < this.keys.length; i++) {      
       console.log("inside for loop")
       console.log(this.extVal)
       console.log("x:"+this.keys[i])
@@ -167,6 +166,7 @@ extVal:' ',
       
     }*/
 
+
       console.log("after for loop")
 
      // console.log(this.httpRes)
@@ -174,13 +174,12 @@ extVal:' ',
       console.log("ExtVal after response")
       console.log(this.extVal)  
 
-
       })
 
 
     
 
-      console.log("after response")
+    console.log("after response")
 
     this.tempRes= this.extVal
 
@@ -215,6 +214,8 @@ extVal:' ',
 
 
     Plotly.redraw(this.$refs.line, data ,layout)
+    Plotly.update(this.$refs.line, data ,layout)
+
 
     this.rePlot()
        }, 

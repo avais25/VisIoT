@@ -4,7 +4,7 @@
   
           <!-- <h4 class="title">Gauge ({{this.level}})</h4> -->
           <div ref="text"></div>
-          <h1>{{nm}}:{{level}}</h1>
+          <h1>{{level}}</h1>
 
 
   </div>
