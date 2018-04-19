@@ -2,7 +2,7 @@
     
 
 <div class="app" >
-
+<div id="container">
   <div class="datasource">
 
 <addD v-on:onSubmit="addDatasourceFn($event)"></addD>
@@ -36,9 +36,10 @@
 
 </div>
 
-
+</div>
+<div id="grid_box">
 <gridL v-bind:testLayout="testLayout" ></gridL>
-
+</div>
   </div>
 
 </template>
@@ -229,6 +230,7 @@ export default {
   margin-top: 60px;
 }
 
+
 .datasource{
   width: 50%;
   float: left;
@@ -261,6 +263,10 @@ export default {
 #header_container{
   background: rgba(0,0,0,.2);
 }
-
+#grid_box{
+  clear: both;
+  position: relative;
+  margin-top:50px; 
+}
 </style>
 

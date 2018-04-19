@@ -6,24 +6,26 @@
  -->
 <modal name="add-widget" @before-open="beforeOpen">
 
-<form>
-  Name:<br>
+<div id="modal_box">
+<form id="form">
+<label> Name:</label>
   <input v-model="nm"  type="text" name="name" required>
   <br>
-  Type:<br>
+<label> Type:</label>
   <select v-model="type">
     <option >Line</option>
     <option >Gauge</option>
     <option >Battery</option>
     <option >Map</option>
     <option >Text</option>
+    <option>PastLine</option>
 
 
   </select>
-  
   <br>
+ <label>
   Select a Datasource:-
-  <br>
+  </label>
   <select v-on:click="jsonParsing" v-model="url">
     <p >
     <option  v-for="ds in arr" v-bind:value="ds.url">
@@ -36,7 +38,7 @@
   </select>
   <br>
 
-Select Device:-<br>
+<label> Select Device </label>
 
   <br>
   <select   v-on:click="jsonIterator" v-model="jsonSelected">
@@ -48,7 +50,7 @@ Select Device:-<br>
 
   <button v-on:click="onSub" type="button">Submit</button>
 </form>
-
+</div>
 </modal>
 
 </div>
