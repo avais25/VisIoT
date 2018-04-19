@@ -43,8 +43,10 @@
   <br>
   <select   v-on:click="jsonIterator" v-model="jsonSelected">
     <option v-for="(value,key) in httpRes" v-bind:values="key">{{key}}</option>
-    
-  </select>{{jsonPath}}
+   
+  </select>
+   <br>
+  {{jsonPath}}
   <br>
 
 
