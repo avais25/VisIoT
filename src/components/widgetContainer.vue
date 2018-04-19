@@ -23,9 +23,9 @@
       <plotlyLine v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></plotlyLine>
       </div>
 
-      <!-- <div v-if="index==1">
-      <plotlyLine v-bind:ht="ht" v-bind:wt="wt" ></plotlyLine>
-      </div> -->
+      <div v-if="type == 'Text'">
+      <textv v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></textv>
+      </div>
 
       </div>
 
@@ -40,6 +40,7 @@
 //import eGauge from './echart';
 import plotlyGauge from './Widgets/Gauge'
 import plotlyLine from './Widgets/Line'
+import textv from './Widgets/text'
 // import cGauge from './cgauge';
  
 export default {
@@ -87,7 +88,7 @@ export default {
   },
     
     components:{plotlyGauge,
-    plotlyLine
+    plotlyLine,textv
   },
 
     methods:{
