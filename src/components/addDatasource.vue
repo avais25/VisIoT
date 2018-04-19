@@ -7,7 +7,7 @@
   <!-- <button v-on:click="show" type="button">Add Datasource</button>
  -->
 </div>
-
+  
 
 <modal name="add-datasource" @before-open="beforeOpen">
 <form>
@@ -102,5 +102,23 @@ export default {
 #btn{
   margin-right:10px;
   float: right;
+}
+
+button{
+  
+    background: rgba(0,200,0,.7);
+    padding: 10px;
+    font-family:tahoma;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+
+}
+#datasource_button{
+  margin: 0px 100px 0px 100px;
+}
+
+#button_add_datasource{
+  color: white;
 }
 </style>
