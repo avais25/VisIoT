@@ -252,7 +252,7 @@ var layout = {
        margin: { t: 80, l: 5, b: 5, r: 5 }
 }
 
-
+    Plotly.redraw(this.$refs.gauge,data ,layout)
     Plotly.update(this.$refs.gauge,data ,layout)
        },
     
