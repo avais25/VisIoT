@@ -27,6 +27,10 @@
       <textv v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></textv>
       </div>
 
+      <div v-if="type == 'PastLine'">
+      <textp v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></textp>
+      </div>
+
       </div>
 
 
@@ -41,6 +45,7 @@
 import plotlyGauge from './Widgets/Gauge'
 import plotlyLine from './Widgets/Line'
 import textv from './Widgets/text'
+import textp from './Widgets/pastLine'
 // import cGauge from './cgauge';
  
 export default {
@@ -88,7 +93,7 @@ export default {
   },
     
     components:{plotlyGauge,
-    plotlyLine,textv
+    plotlyLine,textv,textp
   },
 
     methods:{

@@ -1,8 +1,6 @@
 <template>
   <div >
  
-  
-         <!--  <h4 class="title">Line Plot(temp:{{this.tempRes}})(Humid:{{this.humRes}})</h4> -->
           <div ref="line"></div>
 
 
@@ -11,6 +9,17 @@
 
 <script>
 import Plotly from 'plotly.js'
+import json from './past1.json'
+
+
+var xg=[1,2,3,4];
+var yg=[0,0,0,0];
+
+
+
+/*for (var i = 0; i < Things.length; i++) {
+  Things[i]
+}*/
 export default {
  props:{
   //getting height and width of the grid item
@@ -39,16 +48,12 @@ export default {
 
  data() {
   return{
-    //contains the data
 
-/*   a:[1, 2, 3, 4],
- b: [10, 15, 13, 17],
-*/
- 
+    myjson: json, 
     trace1 : {
   type: 'scatter',
-  x: [1, 2, 3, 4],
-  y: [0, 0, 0, 0],
+  x: xg,
+  y: yg,
   mode: 'lines',
   name: 'Temperature',
   line: {
@@ -266,6 +271,10 @@ extVal:' ',
         }.bind(this), 1000); 
 
       console.log("value of url"+this.url)
+
+      var jsonData = JSON.parse(past1.json);
+      console.log("fetching jsonData");
+      console.log(jsonData);
 
   },
 }
