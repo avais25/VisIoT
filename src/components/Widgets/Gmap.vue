@@ -48,7 +48,10 @@ export default {
     }
   },
 
-  mounted: function () {
+
+methods: {
+  mapp()
+  {
     this.bounds = new google.maps.LatLngBounds();
     const element = document.getElementById(this.mapName)
     const mapCentre = this.markerCoordinates[0]
@@ -65,6 +68,18 @@ export default {
     this.markers.push(marker)
       this.map.fitBounds(this.bounds.extend(position))
     });
+  },
+},
+
+
+
+  mounted: function () {
+    this.mapp();
+
+    this.mapp()
+      setInterval(function () {
+          this.refreshData();
+        }.bind(this), 1000); 
   }
 };
 </script>
