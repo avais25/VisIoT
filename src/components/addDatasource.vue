@@ -8,6 +8,7 @@
  -->
 </div>
 
+
 <modal name="add-datasource" @before-open="beforeOpen">
 <form>
   Name:<br>
