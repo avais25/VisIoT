@@ -1,0 +1,19 @@
+						
+body{
+	background: rgba(0,0,0,.9);	
+}
+
+#main_head{
+	border: 2px solid white;
+	padding :0px 15px 0px 40px;
+	font:25px bold Tahoma;
+	color: white;
+	margin-bottom: 40px;
+}
+#static_part{
+	
+	margin-bottom: 50px; 
+}
+#modal_comp{
+	background: black;
+}

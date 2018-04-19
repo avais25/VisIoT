@@ -1,6 +1,7 @@
 <template>
-<div>
-  <button v-on:click="show" type="button">Add Widget</button>
+<div id="add_widget">
+
+  <button id="widgetButton" v-on:click="show" type="button"><span id="button_add_datasource">ADD WIDGET</span></button>
   <!-- <button v-on:click="show" type="button">Add Datasource</button>
  -->
 <modal name="add-widget" @before-open="beforeOpen">
@@ -215,5 +216,13 @@ data() {
 #btn{
   margin-right:10px;
   float: right;
+}
+#add_widget{
+  background: rgba(0,0,0,.4);
+}
+#widgetButton{
+ width: 200px;
+ background: rgba(200,0,0,.9);
+
 }
 </style>
