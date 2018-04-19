@@ -1,25 +1,31 @@
 <template>
     
 
-  
-
 <div class="app" >
 
   <div class="datasource">
 
 <addD v-on:onSubmit="addDatasourceFn($event)"></addD>
 <ul>
-      <li v-for="ds in dataSrcArr">
+<li style="list-style: none" v-for="ds in dataSrcArr">
+  
 
         <span v-if="ds.header" :class="{dataSource: ds.contacted}">
-        {{ds.name}}: {{ds.url}}
+            
+          <span class="datasource_name_header">NAME</span>
+          <span class="datasource_name_header">URL</span>
+
           <br>
       </span>
 
 
         <span v-else="ds.header" :class="{dataSource: ds.contacted}">
-        {{ds.name}}: {{ds.url}}
-        <button v-on:click="deleteDatasource(ds)">x</button>
+         <span class="datasource_name_header">{{ds.name}}</span>
+           <span class="datasource_name_header">{{ds.url}}</span> 
+
+        <span id="cross_button" v-on:click="deleteDatasource(ds)">x</span>
+       <hr>
+
       </span>
       </li>
     </ul>
@@ -222,8 +228,39 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-#box{
-  background-color: #000000;
+
+.datasource{
+  width: 50%;
+  float: left;
+  margin-left: 50px;
+  background: rgba(0,0,0,.4);
+  padding: 20px;
 }
+.addWidget{
+   
+  float: left;
+  position: relative;
+  padding: 20px 60px;
+}
+#cross_button{
+  width: 5px;
+  height: 5px;
+  background: rgba(20,20,20,);
+  color: red;
+  border-radius: 2px;
+  
+  text-align: center;
+  padding:1px 3px;
+}
+.datasource_name_header{
+
+  margin: 50px;
+  color: white;
+  
+}
+#header_container{
+  background: rgba(0,0,0,.2);
+}
+
 </style>
 

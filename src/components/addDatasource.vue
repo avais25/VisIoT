@@ -1,9 +1,12 @@
 <template>
 <div>
-  <button v-on:click="show" type="button">Add Datasource</button>
+ <div id="datasource_button">
+  <button v-on:click="show" type="button"><span id="button_add_datasource">ADD DATASOURCE</span>
+
+  </button>
   <!-- <button v-on:click="show" type="button">Add Datasource</button>
  -->
-
+</div>
 
 <modal name="add-datasource" @before-open="beforeOpen">
 <form>
