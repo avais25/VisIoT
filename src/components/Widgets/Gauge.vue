@@ -11,12 +11,13 @@
 </template>
 
 <script>
+
+//importing the components
+
 import Plotly from 'plotly.js'
 
-
-
-
 export default {
+  // properties 
  props:{
     ht:{
       type:Number,

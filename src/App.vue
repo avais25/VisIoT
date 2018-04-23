@@ -3,42 +3,47 @@
 
 <div class="app" >
 <div id="container">
-  <div class="datasource">
 
-<addD v-on:onSubmit="addDatasourceFn($event)"></addD>
-<ul>
-<li style="list-style: none" v-for="ds in dataSrcArr">
-  
+<div class="datasource">
+
+  <addD v-on:onSubmit="addDatasourceFn($event)"></addD>
+    <ul>
+      <li style="list-style: none" v-for="ds in dataSrcArr">
 
         <span v-if="ds.header" :class="{dataSource: ds.contacted}">
-            
-          <span class="datasource_name_header">NAME</span>
+
+<!-- Header of the column as NAME and URL -->
+
+          <span class="datasource_name_header">NAME</span> 
           <span class="datasource_name_header">URL</span>
 
           <br>
-      </span>
+        </span>
 
+<!-- Dynamically fetching all the data sources have been added by user and shows in a table format NAME and URL -->
 
         <span v-else="ds.header" :class="{dataSource: ds.contacted}">
-         <span class="datasource_name_header">{{ds.name}}</span>
+           <span class="datasource_name_header">{{ds.name}}</span>
            <span class="datasource_name_header">{{ds.url}}</span> 
-
-        <span id="cross_button" v-on:click="deleteDatasource(ds)"><img src="./assets/delete.gif" style="width: 18px;height: 20px;"> </span>
-       <hr>
-
-      </span>
+           <span id="cross_button" v-on:click="deleteDatasource(ds)">
+              <img src="./assets/delete.gif" style="width: 18px;height: 20px;">
+           </span>
+           <hr>
+        </span>
       </li>
     </ul>
 </div>
 
+<!-- triggering the event add widget -->
 <div class="addWidget">
+
   <addW v-on:getname="getname($event)" v-on:gettype="gettype($event)" v-on:getkeys="getkeys($event)" v-on:geturl="geturl($event)" v-on:addit="addItem($event)"  v-bind:arr="dataSrcArr"></addW>
 
 </div>
 
 </div>
 <div id="grid_box">
-<gridL v-bind:testLayout="testLayout" ></gridL>
+    <gridL v-bind:testLayout="testLayout" ></gridL>
 </div>
   </div>
 
@@ -46,7 +51,7 @@
 
 <script>
 
-
+//importing the components
 
 import gridL from './components/gridLayout'
 import addD from './components/addDatasource'
@@ -59,6 +64,7 @@ import addW from './components/addWidget'
 export default {
   name: 'App',
 
+// Properties 
 
   props: {
   arr: {
@@ -101,17 +107,18 @@ export default {
 
    methods: {
   show:function () {
-    this.$modal.show('hello-world');
+    this.$modal.show('hello-world');   // Function to show pop up dialogue box
   },
   hide:function () {
-    this.$modal.hide('hello-world');
+    this.$modal.hide('hello-world');  // Function to hide pop up dialogue box
   },
   beforeOpen:function (event) {
-    console.log(event.params.foo);
+    console.log(event.params.foo);   // Function to execute before pop up dialogue box
   },
 
 
-//adding the datasource
+//adding the datasource 
+
   addDatasourceFn(arr){
     //this.title=name;
     console.log(arr);
@@ -127,7 +134,9 @@ export default {
   },
 
 
+
 //deleting the datasource
+
   deleteDatasource: function(ds){
       this.dataSrcArr.splice(this.dataSrcArr.indexOf(ds),1);
     },
@@ -219,6 +228,8 @@ export default {
 
 
 </script>
+
+<!-- styles adding to the various buttons and boxes -->
 
 <style>
 #app {

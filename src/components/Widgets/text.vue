@@ -2,7 +2,7 @@
   <div >
  
   
-          <!-- <h4 class="title">Gauge ({{this.level}})</h4> -->
+          <!-- Showing the value in text format-->
           <div ref="text"></div>
           <h1>{{level}}</h1>
 
@@ -11,30 +11,33 @@
 </template>
 
 <script>
+
+// importing the component 
 import Plotly from 'plotly.js'
 
 
 
-
 export default {
+
+// properties of the widgets
  props:{
-    ht:{
+    ht:{                            // Height 
       type:Number,
       default:'10'
     },
-    wt:{
+    wt:{                            // Width
       type:Number,
       default:'10'
     },
-        url: {
+    url: {                          // URL value 
       type: String,
       default: ' '
     },
-    keys: {
+    keys: {                         // Key values
       type: Array,
       default: function () { return [] }
     },
-    nm: {
+    nm: {                           // Actual value
       type: String,
       default: ' '
     }
@@ -83,6 +86,7 @@ export default {
     console.log("before for loop")
     console.log(this.extVal)
 
+//Iterating for all the values
 
     for (var i = 0; i < this.keys.length; i++) {
       
@@ -123,7 +127,7 @@ export default {
 
 
 
-
+// Called on time of creation
   created () {
     //this.fetchData()
 

@@ -1,56 +1,56 @@
 <template>
 <div id="add_widget">
 
-  <button id="widgetButton" v-on:click="show" type="button"><span id="button_add_datasource">ADD WIDGET</span></button>
-  <!-- <button v-on:click="show" type="button">Add Datasource</button>
- -->
+  <button id="widgetButton" v-on:click="show" type="button">
+      <span id="button_add_datasource">ADD WIDGET</span>
+  </button>
+
+  <!-- 
+  using Vue-Modal to create a dialogue box which pop ups
+  -->
 <modal name="add-widget" @before-open="beforeOpen">
 
 <div id="modal_box">
-<form id="form">
-<label> Name:</label>
-  <input v-model="nm"  type="text" name="name" required>
-  <br>
-<label> Type:</label>
-  <select v-model="type">
-    <option >Line</option>
-    <option >Gauge</option>
-    <option >Map</option>
-    <option >Text</option>
-    <option>PastLine</option>
+    <form id="form">
+      <label> Name:</label>
+        <input v-model="nm"  type="text" name="name" required>
+        <br>
+      <label> Type:</label>
+          <select v-model="type">       <!-- List of type of widgets in dropdown menu -->
+            <option >Line</option>
+            <option >Gauge</option>
+            <option >Map</option>
+            <option >Text</option>
+            <option>PastLine</option>
+          </select>
+
+      <br>
+
+      <label>Select a Datasource:</label>             <!-- Select any data source which already created -->
+      <select v-on:click="jsonParsing" v-model="url">
+        <p>
+          <option  v-for="ds in arr" v-bind:value="ds.url">
+            <p v-if="ds.header"></p>
+            <p v-else="ds.header">{{ds.name}}</p>     <!-- showing Data Sources name dynamically created by user -->
+          </option>
+        </p> 
+      </select>
+
+      <br>
+
+    <label> Select Device </label>    <!-- Device from which data is coming like sensor. Example "Device61.199" -->
+      <br>  
+      <select   v-on:click="jsonIterator" v-model="jsonSelected">
+        <option v-for="(value,key) in httpRes" v-bind:values="key">{{key}}</option>
+      </select>
+
+       <div id="record_path">
+           {{jsonPath}}       <!-- Recording the path like "state -> reported -> Device61.199" -->
+       </div>
 
 
-  </select>
-  <br>
- <label>
-  Select a Datasource:
-  </label>
-  <select v-on:click="jsonParsing" v-model="url">
-    <p >
-    <option  v-for="ds in arr" v-bind:value="ds.url">
-      <p v-if="ds.header"></p>
-      <p v-else="ds.header">{{ds.name}}</p>
-    </option>
-    </p> 
-
-
-  </select>
-  <br>
-
-<label> Select Device </label>
-
-  <br>
-  <select   v-on:click="jsonIterator" v-model="jsonSelected">
-    <option v-for="(value,key) in httpRes" v-bind:values="key">{{key}}</option>
-   
-  </select>
-   <div id="record_path">
-  {{jsonPath}}
-</div>
-
-
-  <button id="addWidget_button" v-on:click="onSub" type="button">Submit</button>
-</form>
+      <button id="addWidget_button" v-on:click="onSub" type="button">Submit</button>
+    </form>
 </div>
 </modal>
 
@@ -101,6 +101,8 @@ data() {
   },
 
     methods: {
+
+// Function to show the Modal pop up
   show () {
     this.$modal.show('add-widget');
     this.jsonPath='';
@@ -110,6 +112,8 @@ data() {
 
     console.log("show modal function called")
   },
+
+// Function to hide the Modal pop up
   hide () {
     this.$modal.hide('add-widget');
     this.jsonPath='';
@@ -120,6 +124,9 @@ data() {
   },
 
 
+
+// Function called before Dialogue is opened...
+
   beforeOpen (event) {
     //console.log(event.params.foo);
     this.jsonPath='';
@@ -127,6 +134,10 @@ data() {
     //this.arrayOfKey.splice(0,this.arrayOfKey.length)
     console.log("beforeOpen of addWidget called");
   },
+
+
+
+// Function to parse the json data...
 
   jsonParsing() {
     console.log("Url Passed: ");
@@ -142,6 +153,8 @@ data() {
       this.httpRes=response.data
       })
   },
+
+
 
   jsonIterator() {
 
@@ -176,27 +189,16 @@ data() {
 
   onSub(){
     //this.hide();
-   
-   
     console.log("Name inside addWidget:");
-    //console.log(this.arr);
 
     //sending name
     this.$emit('getname',this.nm);
-
     this.$emit('gettype',this.type);
-
     var ak=this.arrayOfKey;
-
     this.$emit('getkeys',ak);
-
     this.$emit('geturl',this.url);
-
     this.$emit('addit','  ');
-
-    
     console.log("addit event emited");
-
     console.log("Name passed from addWidget:"+this.nm);
     console.log("Type passed from addWidget:"+this.type);
     console.log("Array of keys passed from addWidget:");
@@ -214,6 +216,7 @@ data() {
 </script>
 
 
+<!-- Style for ADD WIDGET button and SUMBIT button -->
 
 <style>
 #btn{

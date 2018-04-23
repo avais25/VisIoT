@@ -1,7 +1,6 @@
 <template>
   <div >
  
-  
           <h4 class="title">Gauge</h4>
           <div ref="gauge"></div>
           <div ref="pie"></div>
@@ -11,9 +10,12 @@
 </template>
 
 <script>
+// importing plotly component
 import Plotly from 'plotly.js'
 export default {
  props:{
+
+// Having 2 properties height and width
     ht:{
       type:Number,
       default:'10'
@@ -33,51 +35,51 @@ export default {
 
   methods: {
 
-
+// Function to draw gauge using plotly
     gauge: function(){
 
       console.log("gauge function called");
 
       // Enter a speed between 0 and 180
-var level = 90
+    var level = 90
 
-// Trig to calc meter point
-var degrees = 180 - level
-var radius = .5
-var radians = degrees * Math.PI / 180
-var x = radius * Math.cos(radians)
-var y = radius * Math.sin(radians)
+    // Trig to calc meter point
+    var degrees = 180 - level
+    var radius = .5
+    var radians = degrees * Math.PI / 180
+    var x = radius * Math.cos(radians)
+    var y = radius * Math.sin(radians)
 
-// Path: may have to change to create a better triangle
-var mainPath = 'M -.0 -0.025 L .0 0.025 L ',
-   pathX = String(x),
-   space = ' ',
-   pathY = String(y),
-   pathEnd = ' Z'
-var path = mainPath.concat(pathX,space,pathY,pathEnd)
+    // Path: may have to change to create a better triangle
+    var mainPath = 'M -.0 -0.025 L .0 0.025 L ',
+       pathX = String(x),
+       space = ' ',
+       pathY = String(y),
+       pathEnd = ' Z'
+    var path = mainPath.concat(pathX,space,pathY,pathEnd)
 
-var data = [{ type: 'scatter',
-   x: [0], y:[0],
-  marker: {size: 28, color:'850000'},
-  showlegend: false,
-  name: 'speed',
-  text: level,
-  hoverinfo: 'text+name'},
-  { values: [50/6, 50/6, 50/6, 50/6, 50/6, 50/6, 50],
-  rotation: 90,
-  // text: ['TOO FAST!', 'Pretty Fast', 'Fast', 'Average',
-  // 'Slow', 'Super Slow', ''],
-  textinfo: 'text',
-  textposition:'inside',    
-  marker: {colors:['rgba(14, 127, 0, .5)', 'rgba(110, 154, 22, .5)',
-             'rgba(170, 202, 42, .5)', 'rgba(202, 209, 95, .5)',
-             'rgba(210, 206, 145, .5)', 'rgba(232, 226, 202, .5)',
-             'rgba(245, 245, 245, 0)']},
-  labels: ['151-180', '121-150', '91-120', '61-90', '31-60', '0-30', ''],
-  hoverinfo: 'label',
-  hole: .5,
-  type: 'pie',
-  showlegend: false
+    var data = [{ type: 'scatter',
+       x: [0], y:[0],
+      marker: {size: 28, color:'850000'},
+      showlegend: false,
+      name: 'speed',
+      text: level,
+      hoverinfo: 'text+name'},
+      { values: [50/6, 50/6, 50/6, 50/6, 50/6, 50/6, 50],
+      rotation: 90,
+      // text: ['TOO FAST!', 'Pretty Fast', 'Fast', 'Average',
+      // 'Slow', 'Super Slow', ''],
+      textinfo: 'text',
+      textposition:'inside',    
+      marker: {colors:['rgba(14, 127, 0, .5)', 'rgba(110, 154, 22, .5)',
+                 'rgba(170, 202, 42, .5)', 'rgba(202, 209, 95, .5)',
+                 'rgba(210, 206, 145, .5)', 'rgba(232, 226, 202, .5)',
+                 'rgba(245, 245, 245, 0)']},
+      labels: ['151-180', '121-150', '91-120', '61-90', '31-60', '0-30', ''],
+      hoverinfo: 'label',
+      hole: .5,
+      type: 'pie',
+      showlegend: false
 }]
 
 var layout = {
@@ -102,8 +104,6 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
 
 
     }
-
-    
     
   },
 

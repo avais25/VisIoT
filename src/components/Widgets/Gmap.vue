@@ -1,5 +1,9 @@
 <template>
+
+<!-- Drawing the map using google API keys -->
+
   <div v-bind:style="{ height: height + 'px'}" class="googlemap" :id="mapName"></div>
+
 </template>
 <script>
 export default {
@@ -50,6 +54,9 @@ export default {
 
 
 methods: {
+
+// Method to draw the map 
+
   mapp()
   {
     this.bounds = new google.maps.LatLngBounds();
@@ -72,6 +79,7 @@ methods: {
 },
 
 
+// called while mounting
 
   mounted: function () {
     this.mapp();

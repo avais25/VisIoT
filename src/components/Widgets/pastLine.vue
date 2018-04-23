@@ -1,6 +1,6 @@
 <template>
   <div >
- 
+        <!-- ploting the previous data --> 
           <div ref="line"></div>
 
 
@@ -8,6 +8,8 @@
 </template>
 
 <script>
+//importing the components
+
 import Plotly from 'plotly.js'
 import json from './past1.json'
 
@@ -73,6 +75,8 @@ extVal:' ',
   methods: {
 
 
+// Function to plot the line widget
+
     linePlot: function(){
 
           console.log("linePlot function called");
@@ -90,7 +94,7 @@ extVal:' ',
     
       },
 
-
+// Function to plot for refreshed data
 
     refreshData() {
 

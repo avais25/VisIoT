@@ -2,7 +2,7 @@
   <div >
  
   
-         <!--  <h4 class="title">Line Plot(temp:{{this.tempRes}})(Humid:{{this.humRes}})</h4> -->
+         <!-- Draw the line widget-->
           <div ref="line"></div>
 
 
@@ -79,7 +79,7 @@ extVal:' ',
 
   methods: {
 
-
+// method to plot the line 
     linePlot: function(){
 
           console.log("linePlot function called");
@@ -152,6 +152,7 @@ extVal:' ',
     console.log("before for loop")
     console.log(this.extVal)
 
+// iterating for all the values 
 
     for (var i = 0; i < this.keys.length; i++) {      
       console.log("inside for loop")

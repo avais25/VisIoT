@@ -2,12 +2,11 @@
 
   <button></button>
 
-
 </template>
  
 <script>
 
-
+// importing the components from widgets for gauge and line 
 
 import plotlyGauge from './Widgets/Gauge'
 import plotlyLine from './Widgets/Line'
@@ -18,7 +17,7 @@ export default {
 
 	name: 'addPane',
   props:{
-    
+    		// no properties 
   },
     
     components:{
@@ -26,7 +25,7 @@ export default {
 
     methods:{
       paneAdder: function(i){
-        this.$emit('addPanEvent');
+        this.$emit('addPanEvent');  // function will execute when addPanEvent is fired...
       },
       
     }
