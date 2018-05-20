@@ -6,6 +6,12 @@ import VueResource from 'vue-resource';
 
 import VModal from 'vue-js-modal'
  
+import VueMaterial from 'vue-material'
+
+import 'vue-material/dist/vue-material.css' 
+
+
+Vue.use(VueMaterial);
 Vue.use(VModal);
 
 Vue.config.debug = true;

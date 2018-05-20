@@ -1,9 +1,9 @@
 <template>
 <div id="add_widget">
 
-  <button id="widgetButton" v-on:click="show" type="button">
+  <md-button class="md-raised md-primary" id="widgetButton" v-on:click="show" type="button">
       <span id="button_add_datasource">ADD WIDGET</span>
-  </button>
+  </md-button>
 
   <!-- 
   using Vue-Modal to create a dialogue box which pop ups
@@ -227,6 +227,7 @@ data() {
 #widgetButton{
  width: 200px;
  background: rgba(200,0,0,.9);
+ margin-left: 150px;
 
 }
 

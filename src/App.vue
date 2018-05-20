@@ -2,27 +2,48 @@
     
 
 <div class="app" >
-<div id="container">
+  <md-card class="head_card2">
+    <md-card-header>
+      <md-card class="head_card">
+      <div class="md-title">
 
-<div class="datasource">
+        Data Visualization
+      </div>
+      <div class="md-subhead">
+        e-yantra
+      </div>
+    </md-card>
+    </md-card-header> 
+    <md-card-content>
+
+
+<div>
 
   <addD v-on:onSubmit="addDatasourceFn($event)"></addD>
-    <ul>
+    
+
+<!-- triggering the event add widget -->
+
+
+  <addW v-on:getname="getname($event)" v-on:gettype="gettype($event)" v-on:getkeys="getkeys($event)" v-on:geturl="geturl($event)" v-on:addit="addItem($event)"  v-bind:arr="dataSrcArr"></addW>
+
+
+<!-- <ul>
       <li style="list-style: none" v-for="ds in dataSrcArr">
 
-        <span v-if="ds.header" :class="{dataSource: ds.contacted}">
+        <span v-if="ds.header" :class="{dataSource: ds.contacted}"> -->
 
 <!-- Header of the column as NAME and URL -->
 
-          <span class="datasource_name_header">NAME</span> 
+        <!--   <span class="datasource_name_header">NAME</span> 
           <span class="datasource_name_header">URL</span>
 
           <br>
-        </span>
+        </span> -->
 
 <!-- Dynamically fetching all the data sources have been added by user and shows in a table format NAME and URL -->
 
-        <span v-else="ds.header" :class="{dataSource: ds.contacted}">
+      <!--   <span v-else="ds.header" :class="{dataSource: ds.contacted}">
            <span class="datasource_name_header">{{ds.name}}</span>
            <span class="datasource_name_header">{{ds.url}}</span> 
            <span id="cross_button" v-on:click="deleteDatasource(ds)">
@@ -31,20 +52,50 @@
            <hr>
         </span>
       </li>
-    </ul>
+    </ul> -->
+
+<md-table>
+<!-- Header of the column as NAME and URL -->
+  <md-table-header>
+    <md-table-row>
+      <md-table-head>Name</md-table-head>
+      <md-table-head>URL</md-table-head>
+    </md-table-row>
+  </md-table-header>
+<br>
+<!-- Dynamically fetching all the data sources have been added by user and shows in a table format NAME and URL -->
+  <md-table-body>
+    <md-table-row v-for="ds in dataSrcArr">
+      <span v-if="ds.header">
+      </span>
+      <span v-else="ds.header">
+      <md-table-cell>{{ds.name}}</md-table-cell>
+      <md-table-cell>{{ds.url}}</md-table-cell>
+      <md-table-cell><span id="cross_button" v-on:click="deleteDatasource(ds)">
+              <img src="./assets/delete.gif" style="width: 18px;height: 20px;">
+           </span></md-table-cell>
+      </span>
+    </md-table-row>
+
+  </md-table-body>
+
+
+</md-table>
+
+
 </div>
 
-<!-- triggering the event add widget -->
-<div class="addWidget">
 
-  <addW v-on:getname="getname($event)" v-on:gettype="gettype($event)" v-on:getkeys="getkeys($event)" v-on:geturl="geturl($event)" v-on:addit="addItem($event)"  v-bind:arr="dataSrcArr"></addW>
 
-</div>
 
-</div>
+
+      </md-card-content>
+  </md-card>
+
 <div id="grid_box">
     <gridL v-bind:testLayout="testLayout" ></gridL>
 </div>
+
   </div>
 
 </template>
@@ -127,7 +178,7 @@ export default {
     this.dataSrcArr.push({
         name: arr.name,
         url: arr.url,
-        header: false
+        header: false,
       });
 
 
@@ -233,16 +284,13 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
+  margin-right: 60px;
+  margin-left: 60px;
 }
 
 
-.datasource{
+/*.datasource{
   width: 50%;
   float: left;
   margin-left: 50px;
@@ -251,7 +299,7 @@ export default {
 }
 .addWidget{
    
-  float: left;
+  float: left;f
   position: relative;
   padding: 20px 60px;
 }
@@ -273,11 +321,18 @@ export default {
 }
 #header_container{
   background: rgba(0,0,0,.2);
-}
+}*/
 #grid_box{
   clear: both;
   position: relative;
   margin-top:50px; 
+}
+.head_card{
+  background: rgba(0,0,0,.1);
+}
+
+.head_card2{
+  background: rgba(0,0,0,.03);
 }
 </style>
 

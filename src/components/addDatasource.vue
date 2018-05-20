@@ -1,12 +1,12 @@
 <template>
 <div id="add_widget">
-     <div id="datasource_button">
-      <button v-on:click="show" type="button">
+    
+      <md-button class="md-raised md-primary " id="dsButton" v-on:click="show" type="button">
           <span id="button_add_datasource">ADD DATASOURCE</span>
-      </button>
+      </md-button>
       <!-- <button v-on:click="show" type="button">Add Datasource</button>
      -->
-    </div>
+
   
   <!-- 
   using Vue-Modal to create a dialogue box which pop ups
@@ -104,7 +104,7 @@ export default {
   float: right;
 }
 
-button{
+/*button{
   
     background: rgba(0,200,0,.7);
     padding: 10px;
@@ -113,12 +113,19 @@ button{
     font-size: 16px;
     border-radius: 5px;
 
+}*/
+
+#dsButton{
+ width: 200px;
+ background: rgba(0,200,0,.9);
+ float: left;
+
 }
 #datasource_button{
   margin: 0px 100px 0px 100px;
 }
 
-#button_add_datasource{
-  color: white;
-}
+/*#button_add_datasource{
+  color: blue;
+}*/
 </style>
