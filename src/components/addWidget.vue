@@ -62,10 +62,6 @@
 
  
 <script>
-
-
-//import vmodal from 'vue-js-modal'
-//var arrayOfKey=[];
  
 export default {
 
@@ -74,6 +70,8 @@ export default {
 
   
   props: {
+
+    //it will contain DataSrcArr which contain list of all datasources
   arr: {
     type: Array,
     default: function () { return [] }
@@ -84,15 +82,19 @@ export default {
 
 data() {
   return{
-    
-    //name: '',
+
     type: '',
+    //this url is modeled in above html
     url:'' ,
     httpRes:'',
+
+    //json path is used to show user the selected path
     jsonPath:'',
+    //contains the selected key
     jsonSelected:'',
     value:'',
     nm:'',
+    //eash selection in the nested json is stored in arrayOfKeys
     arrayOfKey:[]
 }
 },
@@ -108,7 +110,6 @@ data() {
     this.jsonPath='';
     this.httpRes='';
     this.arrayOfKey.splice(0,this.arrayOfKey.length)
-    //this.arrayOfKey=[];
 
     console.log("show modal function called")
   },
@@ -118,7 +119,6 @@ data() {
     this.$modal.hide('add-widget');
     this.jsonPath='';
     this.httpRes='';
-    //this.arrayOfKey.splice(0,this.arrayOfKey.length)
 
     console.log("hide modal function called")
   },
@@ -128,10 +128,8 @@ data() {
 // Function called before Dialogue is opened...
 
   beforeOpen (event) {
-    //console.log(event.params.foo);
     this.jsonPath='';
     this.httpRes='';
-    //this.arrayOfKey.splice(0,this.arrayOfKey.length)
     console.log("beforeOpen of addWidget called");
   },
 
@@ -147,15 +145,12 @@ data() {
     .then(function(response){
       console.log("assigning value to httpRes")
       console.log(response.data.state);
-      //console.log(response.data.state.reported["device21.55"]);
-
-      //this.httpRes=response.data.state.reported["device21.55"]
       this.httpRes=response.data
       })
   },
 
 
-
+//this function helps in selecting sensor output from nesting of json data
   jsonIterator() {
 
     this.$http.get(this.url)
@@ -168,17 +163,14 @@ data() {
     //jsonSelected contains key of selected 
 
     if (this.httpRes.hasOwnProperty(this.jsonSelected)) {
+      //json path is used to show user the selected path
     this.jsonPath=this.jsonPath+" "+this.jsonSelected;
+    //getting one level inside nesting
     this.httpRes=this.httpRes[this.jsonSelected];
   }
-  this.arrayOfKey.push(this.jsonSelected);
-  //httpRes should contain final value
-  // jsonSelected should coontain final key
-  /*else{
-    console.log("else:"+this.jsonSelected);
-    console.log("else:"+this.httpRes);
 
-  }*/
+  //eash selection in the nested json is stored in arrayOfKeys
+  this.arrayOfKey.push(this.jsonSelected);
   
     console.log("jsonSelected:"+this.jsonSelected);
   console.log("res:"+this.httpRes);
@@ -187,8 +179,9 @@ data() {
   
   },
 
+
+  //this function is triggered when submit button is pressed
   onSub(){
-    //this.hide();
     console.log("Name inside addWidget:");
 
     //sending name
@@ -198,6 +191,7 @@ data() {
     this.$emit('getkeys',ak);
     this.$emit('geturl',this.url);
     this.$emit('addit','  ');
+    //debugging using console.log
     console.log("addit event emited");
     console.log("Name passed from addWidget:"+this.nm);
     console.log("Type passed from addWidget:"+this.type);

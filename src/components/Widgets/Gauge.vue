@@ -1,12 +1,7 @@
 <template>
   <div >
- 
-  
-          <!-- <h4 class="title">Gauge ({{this.level}})</h4> -->
           <div ref="gauge"></div>
           
-
-
   </div>
 </template>
 
@@ -163,15 +158,7 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
     }
     
 
-
-    /*for (x in this.keys) {
-      
-    }*/
-
       console.log("after for loop")
-
-     // console.log(this.httpRes)
-
       console.log("ExtVal after response")
       console.log(this.extVal)  
 
@@ -184,12 +171,6 @@ Plotly.newPlot(this.$refs.gauge, data, layout)
       console.log("after response")
 
     this.level= this.extVal
-    /*var temp=this.$http.get('https://www.cse.iitb.ac.in/~ronit/')
-    .then(function(response){
-      console.log(response.data);
-      });
-
-      console.log(temp);*/
 
     // Trig to calc meter point
 var degrees = 180 - this.level
@@ -262,43 +243,19 @@ var layout = {
 
 
 
-
+//this function will be called when the widget is created
   created () {
-    //this.fetchData()
 
     this.$http.get(this.url)
     .then(function(response){
       console.log("assigning vlaur to httpRes")
       console.log(response.data);
-      //console.log(response.data.state.reported["device4.27"]);
 
-      //this.httpRes=response.data.state.reported["device4.27"]
       this.extVal=response.data
       })
 
 
       console.log("after response in created")
-
-    /*var x;
-    
-    console.log("before for loop")
-    console.log(this.extVal)
-    for (x in this.keys) {
-      console.log("inside for loop")
-      console.log(this.extVal)
-      this.extVal=this.extVal[x]
-    }
-
-      console.log("after response")
-
-      console.log(this.httpRes)
-
-      console.log("ExtVal on created"+this.extVal)
-*/
-    
-
-      //console.log(response.data);
-      //this.users =response.data;
     
   },
 

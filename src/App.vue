@@ -19,41 +19,20 @@
 
 <div>
 
+
+  <!-- addD calls a component addDatasuce which adds a new datasource -->
   <addD v-on:onSubmit="addDatasourceFn($event)"></addD>
     
 
 <!-- triggering the event add widget -->
 
-
+ <!--  addW calls a componet addWidget which adds a new widget -->
   <addW v-on:getname="getname($event)" v-on:gettype="gettype($event)" v-on:getkeys="getkeys($event)" v-on:geturl="geturl($event)" v-on:addit="addItem($event)"  v-bind:arr="dataSrcArr"></addW>
 
+    </ul> 
 
-<!-- <ul>
-      <li style="list-style: none" v-for="ds in dataSrcArr">
 
-        <span v-if="ds.header" :class="{dataSource: ds.contacted}"> -->
-
-<!-- Header of the column as NAME and URL -->
-
-        <!--   <span class="datasource_name_header">NAME</span> 
-          <span class="datasource_name_header">URL</span>
-
-          <br>
-        </span> -->
-
-<!-- Dynamically fetching all the data sources have been added by user and shows in a table format NAME and URL -->
-
-      <!--   <span v-else="ds.header" :class="{dataSource: ds.contacted}">
-           <span class="datasource_name_header">{{ds.name}}</span>
-           <span class="datasource_name_header">{{ds.url}}</span> 
-           <span id="cross_button" v-on:click="deleteDatasource(ds)">
-              <img src="./assets/delete.gif" style="width: 18px;height: 20px;">
-           </span>
-           <hr>
-        </span>
-      </li>
-    </ul> -->
-
+<!-- Using material design for vue -->
 <md-table>
 <!-- Header of the column as NAME and URL -->
   <md-table-header>
@@ -63,6 +42,8 @@
     </md-table-row>
   </md-table-header>
 <br>
+
+<!-- populating the datasource list -->
 <!-- Dynamically fetching all the data sources have been added by user and shows in a table format NAME and URL -->
   <md-table-body>
     <md-table-row v-for="ds in dataSrcArr">
@@ -86,13 +67,12 @@
 </div>
 
 
-
-
-
       </md-card-content>
   </md-card>
 
 <div id="grid_box">
+
+  <!-- gridL calls component gridLayout.vue -->
     <gridL v-bind:testLayout="testLayout" ></gridL>
 </div>
 
@@ -105,7 +85,11 @@
 //importing the components
 
 import gridL from './components/gridLayout'
+
+//addDatasource is the button to add new datasource
 import addD from './components/addDatasource'
+
+//addWidget is the button to add a new widget
 import addW from './components/addWidget'
 
 
@@ -125,9 +109,7 @@ export default {
 
   testLayout: {
     type: Array,
-    default: function () { return [
-      /*{"x":0,"y":0,"w":6,"h":15,"i":"0","name":"gg"},
-      {"x":6,"y":0,"w":6,"h":15,"i":"1","name":"gg"},*/] }
+    default: function () { return [] }
   },
 
 
@@ -140,18 +122,18 @@ export default {
   data() {
     return{
       newUser:{},
-      //name
-
-      nm:'',
+      nm:'',  //name
       type:'',
       aOfKeys:[],
       url: '',
 
+
+      //it is the arrays that contain the list of all added datasources.
       dataSrcArr: [{
         name: 'Name',
         url: 'url',
         header: true,
-        testLayout: this.testLayout,
+        testLayout: this.testLayout,   //testLayout might be unused
       }]
     }
   },
@@ -169,9 +151,8 @@ export default {
 
 
 //adding the datasource 
-
+// this function append the passed name and url to dataSrcArr
   addDatasourceFn(arr){
-    //this.title=name;
     console.log(arr);
     console.log("Name in app.vue:"+arr.name);
 
@@ -241,6 +222,8 @@ export default {
   },
 
 
+  //this function computes the ideal coordinates and index for the new item of grid layout
+  //it adds all the required information in testLayout
   addItem(item){
     console.log("Additem called inside grid layout");
     console.log("Item to be added in GridLayout");
@@ -289,39 +272,6 @@ export default {
   margin-left: 60px;
 }
 
-
-/*.datasource{
-  width: 50%;
-  float: left;
-  margin-left: 50px;
-  background: rgba(0,0,0,.4);
-  padding: 20px;
-}
-.addWidget{
-   
-  float: left;f
-  position: relative;
-  padding: 20px 60px;
-}
-#cross_button{
-  width: 5px;
-  height: 5px;
-  background: rgba(20,20,20,);
-  color: red;
-  border-radius: 2px;
-  
-  text-align: center;
-  padding:1px 3px;
-}
-.datasource_name_header{
-
-  margin: 50px;
-  color: white;
-  
-}
-#header_container{
-  background: rgba(0,0,0,.2);
-}*/
 #grid_box{
   clear: both;
   position: relative;

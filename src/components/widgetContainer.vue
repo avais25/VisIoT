@@ -13,6 +13,7 @@
             </div>
 
 <!-- Drawing various type of widgets -->
+<!-- checking if conditin and calling the widget accordingly -->
               
             <div v-if="type == 'Gauge'">
                <plotlyGauge v-bind:ht="ht" v-bind:wt="wt" v-bind:url="url" v-bind:keys="keys" v-bind:nm="nm"></plotlyGauge>
@@ -74,7 +75,6 @@ export default {
     index: {
       type: Number,
       default: '10'
-      /*default:'Foobar'*/
     },
     nm: {
       type: String,
@@ -100,16 +100,13 @@ export default {
 
     methods:{
       deleteit: function(val){
-        //this.val='1'
 
         this.$emit('deleteit',this.index)
       },
       Addeit: function(val){
-        //this.val='0'
       },
 
       settings: function(val){
-        //this.val='0'
       }
     }
 

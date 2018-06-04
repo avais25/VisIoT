@@ -56,9 +56,7 @@ export default {
   props: {
   testLayout: {
     type: Array,
-    default: function () { return [
-      /*{"x":0,"y":0,"w":6,"h":15,"i":"0","name":"gg"},
-      {"x":6,"y":0,"w":6,"h":15,"i":"1","name":"gg"},*/] }
+    default: function () { return [] }
   },
 
 
@@ -93,14 +91,6 @@ export default {
     }
 
   },
-
-  // Helper for generating column width
-  /*calcColWidth() {
-      this.colWidth = (this.containerWidth - (this.margin[0] * (this.cols + 1))) / this.cols;
-     // console.log("### COLS=" + this.cols + " COL WIDTH=" + colWidth + " MARGIN " + this.margin[0]);
-
-      return this.colWidth;
-  },*/
 
   
 }
